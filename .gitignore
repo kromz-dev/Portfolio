@@ -1,6 +1,8 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# =========================================================================
+# NEXT.JS / NODE.JS COMPREHENSIVE GITIGNORE
+# =========================================================================
 
-# dependencies
+# Dependencies
 /node_modules
 /.pnp
 .pnp.*
@@ -10,32 +12,66 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
-
-# next.js
+# Next.js Build Output
 /.next/
 /out/
-
-# production
 /build
 
-# misc
-.DS_Store
-*.pem
+# Typescript
+*.tsbuildinfo
+next-env.d.ts
 
-# debug
+# Testing & Coverage
+/coverage
+/.nyc_output
+
+# Environment Variables
+# (We ignore all .env files EXCEPT .env.example or .env.template)
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Logs & Debug
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
 
-# vercel
+# IDE & Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+.sublime-project
+.sublime-workspace
+
+# Vercel / Deployments
 .vercel
+.serverless/
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Misc Archives & Cache
+*.tgz
+*.gz
+*.zip
+.eslintcache
+.stylelintcache
+.npm/
+
+# Security (never commit private keys)
+*.pem
+*.key
+*.cert
