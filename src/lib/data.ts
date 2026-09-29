@@ -26,13 +26,14 @@ export const siteConfig = {
    * Tant que la valeur est "contact@exemple.fr", le site affiche une
    * mention « adresse provisoire » à côté.
    */
-  email: "contact@exemple.fr",
+  email: "kkaced31@gmail.com",
   /** TODO: URL LinkedIn. Tant que `null`, LinkedIn n'apparaît pas sur le site. */
-  linkedinUrl: null as string | null,
+  linkedinUrl: "https://www.linkedin.com/in/kamalkaced" as string | null,
 } as const;
 
 export const EMAIL_PLACEHOLDER = "contact@exemple.fr";
-export const isEmailPlaceholder = siteConfig.email === EMAIL_PLACEHOLDER;
+export const isEmailPlaceholder =
+  (siteConfig.email as string) === EMAIL_PLACEHOLDER;
 
 /* ─────────────────────── Services à la personne ─────────────────────── */
 
@@ -52,10 +53,13 @@ export type ServiceId = "web" | "troubleshooting" | "infra" | "ai";
  * `null` => affiche « Prix à venir / Pricing coming soon ».
  */
 export const servicePrices: Record<ServiceId, Localized | null> = {
-  web: null, // TODO
-  troubleshooting: null, // TODO
-  infra: null, // TODO
-  ai: null, // TODO
+  web: { fr: "À partir de 590 €", en: "From €590" },
+  troubleshooting: {
+    fr: "45 €/h à domicile (particuliers) · 60 €/h HT pour les pros",
+    en: "€60/h (businesses, remote) · €45/h on-site for individuals",
+  },
+  infra: { fr: "350 € l'installation + 49 €/mois", en: "€350 setup + €49/month" },
+  ai: { fr: "À partir de 490 €", en: "From €490" },
 };
 
 /* ─────────────────────────── Réalisations ─────────────────────────── */
@@ -69,7 +73,7 @@ export const homeLabDetails: {
   services: Localized | null;
 } = {
   hardware: null, // TODO: matériel
-  services: null, // TODO: services auto-hébergés
+  services: { fr: "Proxmox, Docker, Ollama (modèles IA en local)", en: "Proxmox, Docker, Ollama (local AI models)" },
 };
 
 /**
@@ -85,8 +89,27 @@ export interface ExtraProject {
 }
 
 export const extraProjects: (ExtraProject | null)[] = [
-  null, // TODO: projet 3
-  null, // TODO: projet 4
+  {
+    title: {
+      fr: "Portail client auto-hébergé",
+      en: "Self-hosted client portal",
+    },
+    description: {
+      fr: "Portail client prêt pour la production : React, FastAPI et PostgreSQL orchestrés par Docker Compose, derrière Caddy (HTTPS automatique), avec sauvegardes chiffrées et procédure de restauration.",
+      en: "Production-ready client portal: React, FastAPI and PostgreSQL orchestrated with Docker Compose, behind Caddy (automatic HTTPS), with encrypted backups and a restore procedure.",
+    },
+    tags: ["React", "FastAPI", "PostgreSQL", "Docker Compose", "Caddy"],
+    url: "https://github.com/kromz-dev/client-portal-production",
+  },
+  {
+    title: { fr: "LeadFinder", en: "LeadFinder" },
+    description: {
+      fr: "Outil en ligne de commande qui collecte des prospects sur des annuaires publics, les valide selon un schéma strict, les déduplique et les synchronise avec une base Notion servant de CRM. Respecte robots.txt et limite le débit.",
+      en: "Command-line tool that collects prospects from public directories, validates them against a strict schema, deduplicates them and syncs them to a Notion CRM. robots.txt-compliant and rate-limited.",
+    },
+    tags: ["Python", "Playwright", "Notion API", "Pydantic"],
+    url: "https://github.com/kromz-dev/leadfinder",
+  },
 ];
 
 /* ──────────────────────────── Parcours ──────────────────────────── */
@@ -96,7 +119,7 @@ export const extraProjects: (ExtraProject | null)[] = [
  * `null` => affiche « Dates à compléter ». Ne pas mentionner de diplôme :
  * la formation a été suivie mais pas validée.
  */
-export const btsCielPeriod: string | null = null;
+export const btsCielPeriod: string | null = "2024 – 2026";
 
 /**
  * TODO: autres étapes du parcours (emplois, stages, certifications…).
