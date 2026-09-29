@@ -102,13 +102,13 @@ export const extraProjects: (ExtraProject | null)[] = [
     url: "https://github.com/kromz-dev/client-portal-production",
   },
   {
-    title: { fr: "LeadFinder", en: "LeadFinder" },
+    title: { fr: "JobBot", en: "JobBot" },
     description: {
-      fr: "Outil en ligne de commande qui collecte des prospects sur des annuaires publics, les valide selon un schéma strict, les déduplique et les synchronise avec une base Notion servant de CRM. Respecte robots.txt et limite le débit.",
-      en: "Command-line tool that collects prospects from public directories, validates them against a strict schema, deduplicates them and syncs them to a Notion CRM. robots.txt-compliant and rate-limited.",
+      fr: "Moteur de recherche d'emploi local pour aides-soignants : il interroge 5 sites, reconnaît les offres en double, écarte celles hors de la zone (distance réelle), repère les postes accessibles sans diplôme, les note et suit les candidatures. Fonctionne en local, sans compte ni IA générative : chaque décision est explicable.",
+      en: "Local job search engine for care assistants: it queries 5 job sites, detects duplicate listings, filters out offers outside the area (real distance), spots roles open without a diploma, scores them and tracks applications. Runs locally, with no account and no generative AI: every decision is explainable.",
     },
-    tags: ["Python", "Playwright", "Notion API", "Pydantic"],
-    url: "https://github.com/kromz-dev/leadfinder",
+    tags: ["Python", "SQLite", "GitHub Actions"],
+    url: "https://github.com/kromz-dev/jobbot",
   },
 ];
 
