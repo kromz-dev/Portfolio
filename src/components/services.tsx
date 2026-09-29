@@ -53,7 +53,7 @@ export function Services() {
                 <div className="flex items-center gap-4">
                   <Icon
                     size={24}
-                    className="shrink-0 text-accent"
+                    className="shrink-0 text-accent-text"
                     aria-hidden="true"
                   />
                   <h3 className="text-2xl font-semibold tracking-tight text-foreground">

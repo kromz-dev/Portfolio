@@ -51,7 +51,7 @@ export function Contact() {
               className="mb-8 text-4xl font-display font-bold uppercase leading-[0.95] tracking-tighter text-foreground sm:text-6xl"
             >
               {t.contact.heading} <br />
-              <span className="text-accent">{t.contact.headingAccent}</span>
+              <span className="text-accent-text">{t.contact.headingAccent}</span>
             </h2>
             <p className="max-w-xl text-lg leading-relaxed text-muted">
               {t.contact.body}
@@ -65,7 +65,7 @@ export function Contact() {
               </p>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch">
                 <span className="flex min-w-0 items-center gap-3 border border-surface-border bg-background px-5 py-4 font-mono text-base text-foreground select-all break-all">
-                  <Mail size={18} className="shrink-0 text-accent" aria-hidden="true" />
+                  <Mail size={18} className="shrink-0 text-accent-text" aria-hidden="true" />
                   {siteConfig.email}
                 </span>
                 <button
@@ -81,7 +81,7 @@ export function Contact() {
                   {t.contact.copy}
                 </button>
               </div>
-              <p className="mt-2 min-h-5 text-sm text-accent" role="status" aria-live="polite">
+              <p className="mt-2 min-h-5 text-sm text-accent-text" role="status" aria-live="polite">
                 {copyState === "copied"
                   ? t.contact.copied
                   : copyState === "failed"
@@ -128,7 +128,7 @@ export function Contact() {
                   {social.label}
                 </span>
                 <span
-                  className="absolute left-0 top-0 inline-block translate-y-full text-accent transition-transform duration-300 group-hover:translate-y-0"
+                  className="absolute left-0 top-0 inline-block translate-y-full text-accent-text transition-transform duration-300 group-hover:translate-y-0"
                   aria-hidden="true"
                 >
                   {social.label}
@@ -136,7 +136,7 @@ export function Contact() {
               </span>
               <social.icon
                 size={28}
-                className="transition-colors group-hover:text-accent"
+                className="transition-colors group-hover:text-accent-text"
               />
             </motion.a>
           ))}

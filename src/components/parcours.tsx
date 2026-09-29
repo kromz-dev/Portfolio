@@ -25,7 +25,7 @@ function Item({
       transition={{ duration: 0.6, delay: index * 0.1 }}
       className="grid grid-cols-1 gap-4 border-t border-surface-border py-12 transition-colors hover:bg-surface/20 md:grid-cols-12 md:gap-12"
     >
-      <div className="font-mono text-sm uppercase tracking-widest text-accent md:col-span-4">
+      <div className="font-mono text-sm uppercase tracking-widest text-accent-text md:col-span-4">
         {period}
       </div>
       <div className="md:col-span-8">

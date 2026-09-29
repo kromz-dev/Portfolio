@@ -54,10 +54,10 @@ export function Projects() {
           {/* Featured: home lab */}
           <Row index={0}>
             <div className="md:col-span-4">
-              <h3 className="text-3xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-accent">
+              <h3 className="text-3xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-accent-text">
                 {w.homeLab.title}
               </h3>
-              <span className="mt-4 inline-block font-mono text-xs uppercase tracking-widest text-accent">
+              <span className="mt-4 inline-block font-mono text-xs uppercase tracking-widest text-accent-text">
                 {w.featured}
               </span>
             </div>
@@ -88,10 +88,10 @@ export function Projects() {
           {/* Real mission: DNS fix */}
           <Row index={1}>
             <div className="md:col-span-4">
-              <span className="mb-2 block font-mono text-sm uppercase tracking-widest text-accent">
+              <span className="mb-2 block font-mono text-sm uppercase tracking-widest text-accent-text">
                 {w.dnsMission.period}
               </span>
-              <h3 className="text-2xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-accent">
+              <h3 className="text-2xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-accent-text">
                 {w.dnsMission.title}
               </h3>
               <span className="mt-4 inline-block font-mono text-xs uppercase tracking-widest text-muted">
@@ -102,7 +102,7 @@ export function Projects() {
               <p className="max-w-2xl text-lg leading-relaxed text-muted">
                 {w.dnsMission.description}
               </p>
-              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm text-muted/70">
+              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm text-muted">
                 {w.dnsMission.tags.map((tag) => (
                   <span key={tag}>{tag}</span>
                 ))}
@@ -116,7 +116,7 @@ export function Projects() {
               {project ? (
                 <>
                   <div className="md:col-span-4">
-                    <h3 className="text-2xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-accent">
+                    <h3 className="text-2xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-accent-text">
                       {l(project.title)}
                     </h3>
                     {project.url && (
@@ -135,7 +135,7 @@ export function Projects() {
                     <p className="max-w-2xl text-lg leading-relaxed text-muted">
                       {l(project.description)}
                     </p>
-                    <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm text-muted/70">
+                    <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm text-muted">
                       {project.tags.map((tag) => (
                         <span key={tag}>{tag}</span>
                       ))}

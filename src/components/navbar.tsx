@@ -61,10 +61,10 @@ export function Navbar() {
           <a
             href="#"
             aria-label={t.nav.home}
-            className="whitespace-nowrap font-display text-lg font-bold tracking-tighter text-foreground transition-colors hover:text-accent"
+            className="whitespace-nowrap font-display text-lg font-bold tracking-tighter text-foreground transition-colors hover:text-accent-text"
           >
             {siteConfig.shortName}
-            <span className="text-accent">.</span>
+            <span className="text-accent-text">.</span>
           </a>
         </div>
 

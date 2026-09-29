@@ -29,7 +29,7 @@ export function Placeholder({
     <div
       className={`border-2 border-dashed border-muted/40 p-6 text-muted ${className}`}
     >
-      <p className="font-mono text-xs uppercase tracking-widest text-accent">
+      <p className="font-mono text-xs uppercase tracking-widest text-accent-text">
         À compléter / To be completed
       </p>
       {children && <div className="mt-3 text-sm leading-relaxed">{children}</div>}

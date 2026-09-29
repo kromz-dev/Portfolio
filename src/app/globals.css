@@ -9,6 +9,7 @@
   --surface-border: #e4e4e7;
   --muted: #71717a;
   --accent: #2563eb;
+  --accent-text: #2563eb;
   --accent-foreground: #ffffff;
 }
 
@@ -19,6 +20,8 @@
   --surface-border: #1f1f22;
   --muted: #a1a1aa;
   --accent: #2563eb; /* Pure electric blue */
+  /* Lighter blue for text on the near-black background (≈5.5:1, WCAG AA). */
+  --accent-text: #3b82f6;
   --accent-foreground: #ffffff;
 }
 
@@ -29,6 +32,7 @@
   --color-surface-border: var(--surface-border);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
   --color-accent-foreground: var(--accent-foreground);
   --font-sans: var(--font-outfit), system-ui, -apple-system, sans-serif;
   --font-display: var(--font-space), system-ui, -apple-system, sans-serif;

@@ -14,7 +14,7 @@ export function Footer() {
           <div className="flex flex-col items-center gap-1 sm:items-start">
             <span className="text-lg font-bold text-foreground">
               {siteConfig.name}
-              <span className="text-accent">.</span>
+              <span className="text-accent-text">.</span>
             </span>
             <p className="text-sm text-muted">
               © {new Date().getFullYear()} {siteConfig.name}. {t.footer.rights}

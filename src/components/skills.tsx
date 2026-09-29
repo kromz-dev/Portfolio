@@ -35,7 +35,7 @@ export function Skills() {
               transition={{ delay: i * 0.1, duration: 0.6 }}
               className="flex flex-col"
             >
-              <h3 className="mb-6 font-mono text-sm uppercase tracking-widest text-accent">
+              <h3 className="mb-6 font-mono text-sm uppercase tracking-widest text-accent-text">
                 {l(category.title)}
               </h3>
               <ul className="space-y-4">

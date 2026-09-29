@@ -52,7 +52,7 @@ export function Process() {
 
         <div className="mt-24">
           <ScrollReveal>
-            <h3 className="mb-10 font-mono text-sm uppercase tracking-widest text-accent">
+            <h3 className="mb-10 font-mono text-sm uppercase tracking-widest text-accent-text">
               {t.trust.heading}
             </h3>
           </ScrollReveal>
@@ -62,7 +62,7 @@ export function Process() {
                 <div className="flex items-center gap-2">
                   <Check
                     size={16}
-                    className="shrink-0 text-accent"
+                    className="shrink-0 text-accent-text"
                     aria-hidden="true"
                   />
                   <span className="font-semibold text-foreground">

@@ -33,7 +33,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="mb-6 font-mono text-xs uppercase tracking-widest text-accent sm:text-sm"
+            className="mb-6 font-mono text-xs uppercase tracking-widest text-accent-text sm:text-sm"
           >
             {t.hero.eyebrow}
           </motion.p>
@@ -86,7 +86,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.8, duration: 0.6 }}
-        className="absolute bottom-12 right-12 hidden flex-col items-center gap-6 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-accent md:flex"
+        className="absolute bottom-12 right-12 hidden flex-col items-center gap-6 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-accent-text md:flex"
       >
         <span className="[writing-mode:vertical-rl]">{t.hero.scroll}</span>
         <motion.div
