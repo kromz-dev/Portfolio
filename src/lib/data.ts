@@ -119,7 +119,7 @@ export const extraProjects: (ExtraProject | null)[] = [
  * `null` => affiche « Dates à compléter ». Ne pas mentionner de diplôme :
  * la formation a été suivie mais pas validée.
  */
-export const btsCielPeriod: string | null = "2024 – 2026";
+export const btsCielPeriod: string | null = "2025 – 2026";
 
 /**
  * TODO: autres étapes du parcours (emplois, stages, certifications…).
