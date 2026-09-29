@@ -1,246 +1,143 @@
-import { Mail, type LucideIcon } from "lucide-react";
-import {
-  GithubIcon,
-  LinkedinIcon,
-  TwitterXIcon,
-} from "@/components/ui/icons";
-import { type ComponentType, type SVGProps } from "react";
+/* ═══════════════════════════════════════════════════════════════════
+ * data.ts — configuration du site + TOUT ce qui reste à compléter.
+ *
+ * Kamal : cherche « TODO » dans ce fichier. Chaque valeur `null` est
+ * affichée sur le site comme un encart « À compléter / To be completed »
+ * (bordure en pointillés). Remplis-la et l'encart disparaît.
+ *
+ * Tout le texte fixe (FR/EN) est dans src/lib/content.ts.
+ * ═══════════════════════════════════════════════════════════════════ */
+
+/** Texte bilingue. */
+export interface Localized {
+  fr: string;
+  en: string;
+}
 
 /* ─────────────────────────── Site Config ─────────────────────────── */
 
 export const siteConfig = {
-  name: "Kram",
-  title: "Full-Stack Developer",
-  headline: "I craft digital experiences that make a difference.",
-  description:
-    "Software engineer specializing in building exceptional web applications. I turn complex problems into elegant, performant solutions.",
-  location: "France",
-  email: "hello@kromz.dev",
-  resumeUrl: "/resume.pdf",
+  name: "Kamal Kaced",
+  shortName: "Kamal",
+  location: "Mirepoix, Ariège",
+  githubUrl: "https://github.com/kromz-dev",
+  /**
+   * TODO: remplacer par la vraie adresse de contact.
+   * Tant que la valeur est "contact@exemple.fr", le site affiche une
+   * mention « adresse provisoire » à côté.
+   */
+  email: "contact@exemple.fr",
+  /** TODO: URL LinkedIn. Tant que `null`, LinkedIn n'apparaît pas sur le site. */
+  linkedinUrl: null as string | null,
 } as const;
 
-/* ─────────────────────────── Navigation ──────────────────────────── */
+export const EMAIL_PLACEHOLDER = "contact@exemple.fr";
+export const isEmailPlaceholder = siteConfig.email === EMAIL_PLACEHOLDER;
 
-export interface NavLink {
-  label: string;
-  href: string;
+/* ─────────────────────── Services à la personne ─────────────────────── */
+
+/**
+ * TODO (conditionnel) : n'activer qu'une fois la déclaration « services à
+ * la personne » (SAP) effectuée. Tant que c'est `false`, la mention du
+ * crédit d'impôt de 50 % n'est PAS affichée sous les services.
+ */
+export const showSapTaxCreditNote = false;
+
+/* ──────────────────────────── Prix ──────────────────────────────── */
+
+export type ServiceId = "web" | "troubleshooting" | "infra" | "ai";
+
+/**
+ * TODO: prix par service (ex. { fr: "À partir de 500 €", en: "From €500" }).
+ * `null` => affiche « Prix à venir / Pricing coming soon ».
+ */
+export const servicePrices: Record<ServiceId, Localized | null> = {
+  web: null, // TODO
+  troubleshooting: null, // TODO
+  infra: null, // TODO
+  ai: null, // TODO
+};
+
+/* ─────────────────────────── Réalisations ─────────────────────────── */
+
+/**
+ * TODO: détails du home lab. Chaque `null` affiche un encart « À compléter ».
+ * Ex. hardware: { fr: "Mini-PC …, NAS …", en: "Mini PC …, NAS …" }
+ */
+export const homeLabDetails: {
+  hardware: Localized | null;
+  services: Localized | null;
+} = {
+  hardware: null, // TODO: matériel
+  services: null, // TODO: services auto-hébergés
+};
+
+/**
+ * TODO: projets supplémentaires. Chaque `null` affiche une carte
+ * « À compléter ». Remplace par un objet pour afficher un vrai projet.
+ * Ne JAMAIS inventer de client, de chiffre ou de lien.
+ */
+export interface ExtraProject {
+  title: Localized;
+  description: Localized;
+  tags: string[];
+  url?: string;
 }
 
-export const navLinks: NavLink[] = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Contact", href: "#contact" },
+export const extraProjects: (ExtraProject | null)[] = [
+  null, // TODO: projet 3
+  null, // TODO: projet 4
 ];
 
-/* ──────────────────────────── Socials ────────────────────────────── */
+/* ──────────────────────────── Parcours ──────────────────────────── */
 
-type IconComponent =
-  | LucideIcon
-  | ComponentType<SVGProps<SVGSVGElement> & { size?: number }>;
+/**
+ * TODO: dates de la formation BTS CIEL (ex. "2023 – 2024").
+ * `null` => affiche « Dates à compléter ». Ne pas mentionner de diplôme :
+ * la formation a été suivie mais pas validée.
+ */
+export const btsCielPeriod: string | null = null;
 
-export interface Social {
-  label: string;
-  href: string;
-  icon: IconComponent;
+/**
+ * TODO: autres étapes du parcours (emplois, stages, certifications…).
+ * Chaque `null` affiche un encart « À compléter ».
+ */
+export interface ParcoursItem {
+  period: string;
+  title: Localized;
+  description: Localized;
 }
 
-export const socials: Social[] = [
-  { label: "GitHub", href: "https://github.com/kromz", icon: GithubIcon },
-  {
-    label: "LinkedIn",
-    href: "https://linkedin.com/in/kromz",
-    icon: LinkedinIcon,
-  },
-  { label: "Twitter", href: "https://x.com/kromz_dev", icon: TwitterXIcon },
-  { label: "Email", href: "mailto:hello@kromz.dev", icon: Mail },
+export const extraParcours: (ParcoursItem | null)[] = [
+  null, // TODO
 ];
 
-/* ──────────────────────────── Skills ─────────────────────────────── */
+/* ──────────────────────────── Compétences ─────────────────────────── */
 
+/**
+ * TODO (Kamal) : supprime tout ce que tu ne maîtrises pas réellement.
+ * Mieux vaut une liste courte et vraie qu'une liste longue.
+ */
 export interface SkillCategory {
-  title: string;
-  description: string;
-  skills: string[];
+  title: Localized;
+  skills: (string | Localized)[];
 }
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Frontend",
-    description: "Building intuitive and responsive interfaces",
-    skills: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "TailwindCSS",
-      "Framer Motion",
-      "React Native",
-    ],
+    title: { fr: "Web", en: "Web" },
+    skills: ["HTML / CSS", "JavaScript / TypeScript", "React / Next.js"],
   },
   {
-    title: "Backend",
-    description: "Scalable APIs and server architectures",
-    skills: ["Node.js", "Express", "GraphQL", "REST APIs", "Python", "Go"],
+    title: { fr: "Linux & serveurs", en: "Linux & servers" },
+    skills: ["Linux", "Docker", "Reverse proxy", "SSH"],
   },
   {
-    title: "Database",
-    description: "Data modeling and optimization",
-    skills: [
-      "PostgreSQL",
-      "MongoDB",
-      "Redis",
-      "Prisma",
-      "Supabase",
-      "Firebase",
-    ],
+    title: { fr: "Réseau", en: "Networking" },
+    skills: ["DNS", { fr: "Emails : SPF / DKIM / DMARC", en: "Email: SPF / DKIM / DMARC" }, "VPN"],
   },
   {
-    title: "DevOps & Cloud",
-    description: "Infrastructure and deployment pipelines",
-    skills: [
-      "Docker",
-      "Kubernetes",
-      "AWS",
-      "GCP",
-      "GitHub Actions",
-      "Terraform",
-    ],
+    title: { fr: "IA & automatisation", en: "AI & automation" },
+    skills: [{ fr: "Assistants de code IA", en: "AI coding assistants" }, "Python", "Bash"],
   },
-];
-
-/* ─────────────────────────── Projects ────────────────────────────── */
-
-export interface Project {
-  title: string;
-  description: string;
-  longDescription: string;
-  techStack: string[];
-  githubUrl?: string;
-  liveUrl?: string;
-  featured: boolean;
-}
-
-export const projects: Project[] = [
-  {
-    title: "CloudSync",
-    description: "Real-time collaborative workspace platform",
-    longDescription:
-      "A full-stack collaborative workspace featuring real-time document editing, video conferencing, and project management. Built with WebSockets for instant synchronization across all connected clients.",
-    techStack: ["Next.js", "TypeScript", "PostgreSQL", "WebSocket", "Redis"],
-    githubUrl: "https://github.com/kromz/cloudsync",
-    liveUrl: "https://cloudsync.dev",
-    featured: true,
-  },
-  {
-    title: "Nexus AI",
-    description: "Intelligent automation & analytics dashboard",
-    longDescription:
-      "An AI-powered analytics platform that provides predictive insights and automated reporting. Features custom ML pipelines and interactive data visualizations.",
-    techStack: ["React", "Python", "TensorFlow", "FastAPI", "D3.js"],
-    githubUrl: "https://github.com/kromz/nexus-ai",
-    liveUrl: "https://nexus-ai.app",
-    featured: true,
-  },
-  {
-    title: "PayFlow",
-    description: "Modern payment processing API",
-    longDescription:
-      "A developer-friendly payment processing SDK with support for multiple currencies, subscriptions, and real-time transaction monitoring. Handles millions of transactions monthly.",
-    techStack: ["Node.js", "Go", "PostgreSQL", "Stripe", "Docker"],
-    githubUrl: "https://github.com/kromz/payflow",
-    featured: true,
-  },
-  {
-    title: "PixelForge",
-    description: "Browser-based design tool for teams",
-    longDescription:
-      "A collaborative design application running entirely in the browser. Features real-time cursors, component libraries, and export to multiple formats.",
-    techStack: ["React", "Canvas API", "WebRTC", "Supabase", "TailwindCSS"],
-    githubUrl: "https://github.com/kromz/pixelforge",
-    liveUrl: "https://pixelforge.design",
-    featured: false,
-  },
-  {
-    title: "Terravault",
-    description: "Decentralized file storage platform",
-    longDescription:
-      "Secure, encrypted file storage using decentralized infrastructure. End-to-end encryption with zero-knowledge architecture ensures complete data privacy.",
-    techStack: ["TypeScript", "IPFS", "Solidity", "React", "Node.js"],
-    githubUrl: "https://github.com/kromz/terravault",
-    featured: false,
-  },
-  {
-    title: "Catalyst",
-    description: "Open-source CI/CD pipeline builder",
-    longDescription:
-      "Visual pipeline builder for CI/CD workflows. Drag-and-drop interface for creating complex build and deployment pipelines with support for major cloud providers.",
-    techStack: ["Next.js", "Go", "Docker", "Kubernetes", "GraphQL"],
-    githubUrl: "https://github.com/kromz/catalyst",
-    liveUrl: "https://catalyst.build",
-    featured: false,
-  },
-];
-
-/* ────────────────────────── Experience ───────────────────────────── */
-
-export interface Experience {
-  company: string;
-  role: string;
-  period: string;
-  description: string;
-  highlights: string[];
-}
-
-export const experiences: Experience[] = [
-  {
-    company: "TechVault",
-    role: "Senior Full-Stack Engineer",
-    period: "2023 — Present",
-    description:
-      "Leading the architecture and development of a next-generation SaaS platform serving 500K+ users.",
-    highlights: [
-      "Redesigned the core API, reducing latency by 60%",
-      "Led migration from monolith to microservices architecture",
-      "Mentored a team of 5 junior developers",
-    ],
-  },
-  {
-    company: "DataPulse",
-    role: "Full-Stack Developer",
-    period: "2021 — 2023",
-    description:
-      "Built and maintained data-intensive applications and real-time analytics dashboards.",
-    highlights: [
-      "Developed a real-time analytics engine processing 1M+ events/day",
-      "Implemented CI/CD pipelines reducing deployment time by 80%",
-      "Contributed to open-source visualization library",
-    ],
-  },
-  {
-    company: "StartUp Studio",
-    role: "Frontend Developer",
-    period: "2019 — 2021",
-    description:
-      "Shipped MVPs for multiple startups, from concept to production, across diverse industries.",
-    highlights: [
-      "Delivered 8 production-ready MVPs in 2 years",
-      "Established component library used across all studio projects",
-      "Optimized Core Web Vitals achieving 95+ Lighthouse scores",
-    ],
-  },
-];
-
-/* ──────────────────────────── Stats ──────────────────────────────── */
-
-export interface Stat {
-  value: string;
-  label: string;
-}
-
-export const stats: Stat[] = [
-  { value: "5+", label: "Years of experience" },
-  { value: "30+", label: "Projects delivered" },
-  { value: "500K+", label: "Users impacted" },
-  { value: "15+", label: "Open source contributions" },
 ];

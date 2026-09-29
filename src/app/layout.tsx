@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/components/language-provider";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space",
@@ -20,34 +21,29 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const title = "Kamal Kaced | Développeur & services informatiques";
+const description =
+  "Création de sites web, dépannage, hébergement européen et automatisations IA pour TPE, associations et indépendants. Freelance basé à Mirepoix (Ariège), en local et à distance.";
+
 export const metadata: Metadata = {
+  // TODO: set NEXT_PUBLIC_SITE_URL to the production domain once it exists.
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://kromz.dev"
+    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
   ),
   title: {
-    default: "Kram | Full-Stack Developer & Software Engineer",
-    template: "%s | Kram",
+    default: title,
+    template: "%s | Kamal Kaced",
   },
-  description:
-    "Software engineer specializing in building exceptional web applications. I turn complex problems into elegant, performant solutions.",
-  keywords: [
-    "Software Engineer",
-    "Full Stack Developer",
-    "Next.js",
-    "React",
-    "TypeScript",
-    "Portfolio",
-  ],
-  authors: [{ name: "Kram", url: "https://kromz.dev" }],
-  creator: "Kram",
+  description,
+  creator: "Kamal Kaced",
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "fr_FR",
+    alternateLocale: ["en_GB"],
     url: "/",
-    title: "Kram | Full-Stack Developer & Software Engineer",
-    description:
-      "Software engineer specializing in building exceptional web applications.",
-    siteName: "Kram Portfolio",
+    title,
+    description,
+    siteName: "Kamal Kaced",
   },
 };
 
@@ -58,15 +54,15 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en"
+      lang="fr"
       className={`${spaceGrotesk.variable} ${outfit.variable} ${jetbrainsMono.variable} dark h-full antialiased selection:bg-accent selection:text-white`}
       suppressHydrationWarning
     >
       <body className="min-h-full bg-background text-foreground font-sans relative">
         {/* Main Content */}
-        <div className="relative z-10">
-          {children}
-        </div>
+        <LanguageProvider>
+          <div className="relative z-10">{children}</div>
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
@@ -14,18 +15,20 @@ export function TextScramble({
   delay?: number;
 }) {
   const [displayText, setDisplayText] = useState("");
-  const [isScrambling, setIsScrambling] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-    let intervalId: NodeJS.Timeout;
+    let intervalId: ReturnType<typeof setInterval> | undefined;
 
     const startScramble = () => {
-      setIsScrambling(true);
+      if (reduceMotion) {
+        setDisplayText(text);
+        return;
+      }
       let iteration = 0;
-      
+
       intervalId = setInterval(() => {
-        setDisplayText((prev) =>
+        setDisplayText(
           text
             .split("")
             .map((char, index) => {
@@ -38,29 +41,36 @@ export function TextScramble({
 
         if (iteration >= text.length) {
           clearInterval(intervalId);
-          setIsScrambling(false);
           setDisplayText(text);
         }
-        
+
         iteration += 1 / 3;
       }, 30);
     };
 
-    timeoutId = setTimeout(startScramble, delay * 1000);
+    const timeoutId = setTimeout(startScramble, reduceMotion ? 0 : delay * 1000);
 
     return () => {
       clearTimeout(timeoutId);
-      clearInterval(intervalId);
+      if (intervalId) clearInterval(intervalId);
     };
-  }, [text, delay]);
+  }, [text, delay, reduceMotion]);
 
   return (
     <span className={`relative inline-block ${className}`}>
-      {/* Invisible skeleton to perfectly lock the DOM layout and line breaks */}
-      <span className="invisible">{text}</span>
-      
+      {/* Accessible text for screen readers */}
+      <span className="sr-only">{text}</span>
+
+      {/* Invisible skeleton to lock the layout and line breaks */}
+      <span className="invisible" aria-hidden="true">
+        {text}
+      </span>
+
       {/* Absolutely positioned scrambling text over the skeleton */}
-      <span className="absolute left-0 top-0 w-full h-full text-left aria-hidden" aria-hidden="true">
+      <span
+        className="absolute left-0 top-0 h-full w-full text-left"
+        aria-hidden="true"
+      >
         {displayText}
       </span>
     </span>
