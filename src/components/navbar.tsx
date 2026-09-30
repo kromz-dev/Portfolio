@@ -19,6 +19,12 @@ export function LangToggle() {
       aria-label={t.nav.langToggleLabel}
       className="relative flex h-8 items-center rounded-full border border-white/10 bg-white/[0.03] p-0.5"
     >
+      <motion.div
+        className="absolute left-0.5 top-0.5 bottom-0.5 w-9 rounded-full bg-accent"
+        animate={{ x: lang === "en" ? 36 : 0 }}
+        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+        aria-hidden="true"
+      />
       {LANG_OPTIONS.map((opt) => {
         const active = lang === opt.value;
         return (
@@ -29,18 +35,10 @@ export function LangToggle() {
             aria-label={opt.name}
             aria-pressed={active}
             onClick={() => setLang(opt.value)}
-            className={`relative z-10 inline-flex h-full w-9 items-center justify-center rounded-full font-mono text-[11px] font-semibold transition-colors duration-300 ${
+            className={`relative z-10 inline-flex h-full w-9 items-center justify-center rounded-full font-mono text-[11px] font-semibold transition-colors duration-200 ${
               active ? "text-white" : "text-muted hover:text-foreground"
             }`}
           >
-            {active && (
-              <motion.span
-                layoutId="lang-indicator"
-                className="absolute inset-0 -z-10 rounded-full bg-accent shadow-[0_0_16px_-2px_var(--accent)]"
-                transition={{ type: "spring", stiffness: 420, damping: 32 }}
-                aria-hidden="true"
-              />
-            )}
             {opt.label}
           </button>
         );

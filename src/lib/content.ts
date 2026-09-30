@@ -126,7 +126,7 @@ export const content: Record<Lang, Content> = {
       heading: "Qui suis-je",
       paragraphs: [
         "Je m'appelle Kamal Kaced, prestataire informatique indépendant (micro-entreprise) entre Toulouse et l'Ariège. J'interviens sur place dans ces deux secteurs et à distance partout en France et en Europe, en français comme en anglais.",
-        "Je travaille avec des assistants de code IA : je les pilote, je relis et je comprends le code produit, et c'est moi qui le maintiens. Vous avez un interlocuteur unique qui sait ce qui tourne chez vous.",
+        "Mon objectif est simple : vous livrer des outils fiables, performants et maintenables dans le temps. Vous avez affaire à un interlocuteur unique qui maîtrise ce qui tourne chez vous, de la création à la maintenance.",
       ],
     },
     services: {
@@ -205,7 +205,7 @@ export const content: Record<Lang, Content> = {
         { title: "Vous restez propriétaire", description: "Code, domaine et comptes sont à votre nom." },
         { title: "Accès retirés à la fin", description: "Je n'accède qu'à ce qui est nécessaire, et je rends tous les accès à la fin de la mission." },
         { title: "Confidentialité", description: "Accord de confidentialité (NDA) sur demande." },
-        { title: "Hébergement européen", description: "Vos données restent en Europe." },
+        { title: "Hébergement européen", description: "Je privilégie les hébergeurs européens et les solutions permettant de conserver les données en Europe." },
       ],
     },
     work: {
@@ -222,8 +222,8 @@ export const content: Record<Lang, Content> = {
       dnsMission: {
         title: "Raccordement d'une application à son nom de domaine",
         period: "2026",
-        description: "Mission en sous-traitance pour une agence web : configuration DNS pour mettre en ligne l'application d'un de ses clients sur son propre domaine.",
-        reference: "Référence : Julius (agence web), coordonnées sur demande",
+        description: "Mission en sous-traitance pour une agence web : configuration DNS pour mettre en ligne l’application d’un client.",
+        reference: "Référence : Julius, coordonnées sur demande",
         tags: ["DNS", "Freelance"],
       },
     },
@@ -240,7 +240,7 @@ export const content: Record<Lang, Content> = {
       },
     },
     skills: {
-      heading: "Compétences",
+      heading: "Ma stack",
       intro: "Les outils que j'utilise au quotidien.",
     },
     contact: {
@@ -310,7 +310,7 @@ export const content: Record<Lang, Content> = {
       heading: "About me",
       paragraphs: [
         "I'm Kamal Kaced, an independent IT service provider (French micro-entreprise) based between Toulouse and Ariège. I work on site in both areas and remotely across France and Europe, in French or English.",
-        "I work with AI coding assistants: I drive them, I review and understand the code they produce, and I'm the one who maintains it. You get a single point of contact who knows what runs on your systems.",
+        "My goal is simple: to deliver tools that are reliable, fast, and easy to maintain over time. You deal with a single point of contact who knows exactly what runs on your systems, from creation to maintenance.",
       ],
     },
     services: {
@@ -389,7 +389,7 @@ export const content: Record<Lang, Content> = {
         { title: "You stay the owner", description: "Code, domain and accounts are in your name." },
         { title: "Access removed at the end", description: "I only access what's needed, and I hand back all access when the job is done." },
         { title: "Confidentiality", description: "NDA available on request." },
-        { title: "European hosting", description: "Your data stays in Europe." },
+        { title: "European hosting", description: "I prioritize European hosting providers and solutions that keep your data in Europe." },
       ],
     },
     work: {
@@ -406,8 +406,8 @@ export const content: Record<Lang, Content> = {
       dnsMission: {
         title: "Connecting an app to its domain name",
         period: "2026",
-        description: "Subcontracted for a web agency: DNS setup to put one of its clients' apps live on its own domain.",
-        reference: "Reference: Julius (web agency), contact details on request",
+        description: "Subcontracted for a web agency: DNS setup to put a client's app live on their domain.",
+        reference: "Reference: Julius, contact details on request",
         tags: ["DNS", "Freelance"],
       },
     },

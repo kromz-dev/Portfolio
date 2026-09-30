@@ -59,9 +59,20 @@ export const servicePrices: Record<ServiceId, Localized> = {
 export const homeLabDetails: {
   hardware: Localized;
   services: Localized;
+  url: string;
+  tags: string[];
+  features: Localized[];
 } = {
   hardware: { fr: "Dell OptiPlex 3060 sous Proxmox VE 9", en: "Dell OptiPlex 3060 running Proxmox VE 9" },
   services: { fr: "LXC, Docker Compose, n8n, Jellyfin et Tailscale", en: "LXC, Docker Compose, n8n, Jellyfin and Tailscale" },
+  url: "https://github.com/kromz-dev/homelab-infrastructure",
+  tags: ["Proxmox", "LXC", "Docker Compose", "n8n", "Jellyfin", "Tailscale"],
+  features: [
+    { fr: "Gestion de conteneurs LXC et Docker optimisés.", en: "Optimized LXC and Docker container management." },
+    { fr: "Automatisations complètes via n8n.", en: "Full automations via n8n." },
+    { fr: "Réseau privé virtuel sécurisé avec Tailscale.", en: "Secure virtual private network using Tailscale." },
+    { fr: "Sauvegardes régulières de l'infrastructure.", en: "Regular infrastructure backups." }
+  ]
 };
 
 /** Projets affichés après le home lab et la mission DNS. */
@@ -70,6 +81,7 @@ export interface ExtraProject {
   description: Localized;
   tags: string[];
   url?: string;
+  features?: Localized[];
 }
 
 export const extraProjects: ExtraProject[] = [
@@ -84,6 +96,12 @@ export const extraProjects: ExtraProject[] = [
     },
     tags: ["React", "FastAPI", "PostgreSQL", "Docker Compose", "Caddy"],
     url: "https://github.com/kromz-dev/client-portal-production",
+    features: [
+      { fr: "Système de connexion sécurisé.", en: "Secure login system." },
+      { fr: "Suivi de l'état des projets en temps réel.", en: "Real-time project status tracking." },
+      { fr: "Dépôt et téléchargement de documents sensibles.", en: "Upload and download of sensitive documents." },
+      { fr: "Certificats HTTPS gérés automatiquement via Caddy.", en: "HTTPS certificates managed automatically via Caddy." }
+    ]
   },
   {
     title: { fr: "JobBot", en: "JobBot" },
@@ -91,15 +109,21 @@ export const extraProjects: ExtraProject[] = [
       fr: "Moteur de veille d'offres d'emploi en local : il interroge 5 sites, repère les doublons, filtre par distance réelle, note les offres et suit les candidatures. Sans IA générative : chaque décision est explicable.",
       en: "Local job-listing monitor: it queries 5 job sites, spots duplicates, filters by real distance, scores listings and tracks applications. No generative AI: every decision is explainable.",
     },
-    tags: ["Python", "SQLite", "GitHub Actions", "Automatisation"],
+    tags: ["Python", "SQLite", "GitHub Actions"],
     url: "https://github.com/kromz-dev/jobbot",
+    features: [
+      { fr: "Scraping automatisé de 5 plateformes d'emploi.", en: "Automated scraping of 5 job platforms." },
+      { fr: "Filtrage intelligent par distance géographique réelle.", en: "Smart filtering by true geographical distance." },
+      { fr: "Détection des doublons d'offres.", en: "Duplicate job listing detection." },
+      { fr: "Interface de suivi de candidatures intégrée.", en: "Integrated application tracking interface." }
+    ]
   },
 ];
 
 /* ──────────────────────────── Parcours ──────────────────────────── */
 
 /** Période du BTS CIEL. Ne jamais parler de « diplôme » : seule la 1re année est validée. */
-export const btsCielPeriod = "2025 – 2026";
+export const btsCielPeriod = "2024 – 2026";
 
 /** Autres étapes du parcours (emplois, stages, formations). */
 export interface ParcoursItem {
@@ -138,8 +162,8 @@ export const extraParcours: ParcoursItem[] = [
       en: "Care assistant · hospital and care homes",
     },
     description: {
-      fr: "Sens du service, gestion des urgences et rigueur dans l'application des protocoles : des qualités que j'applique aujourd'hui au dépannage informatique.",
-      en: "Customer-service mindset, handling emergencies and rigour in following protocols: qualities I now bring to IT troubleshooting.",
+      fr: "Rigueur, calme et sens du service.",
+      en: "Rigour, calm and a sense of service.",
     },
   },
 ];

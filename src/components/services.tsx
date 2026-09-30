@@ -23,7 +23,7 @@ export function Services() {
   return (
     <section
       id="services"
-      className="relative scroll-mt-24 bg-surface/30 py-24 sm:py-32"
+      className="relative scroll-mt-24 py-24 sm:py-32"
       aria-labelledby="services-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -37,7 +37,7 @@ export function Services() {
           <p className="mt-6 text-lg text-muted">{t.services.intro}</p>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 gap-px border border-surface-border bg-surface-border md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {t.services.items.map((service, i) => {
             const Icon = icons[service.id];
             const price = servicePrices[service.id];
@@ -48,7 +48,7 @@ export function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ delay: i * 0.08, duration: 0.6 }}
-                className="group flex flex-col bg-background p-6 sm:p-10"
+                className="group flex flex-col glass rounded-2xl p-6 sm:p-10 transition-all hover:glass-strong hover:scale-[1.02]"
               >
                 <div className="flex items-center gap-4">
                   <Icon

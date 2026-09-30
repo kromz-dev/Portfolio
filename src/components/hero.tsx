@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { TextScramble } from "@/components/ui/text-scramble";
 import { Magnetic } from "@/components/ui/magnetic";
+import { AmbientOrbs } from "@/components/ui/ambient-orbs";
 import { useLanguage } from "@/components/language-provider";
 
 export function Hero() {
@@ -15,10 +16,7 @@ export function Hero() {
       className="relative flex min-h-[100dvh] items-center overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      {/* Ultra-subtle radial glow for depth */}
-      <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
-        <div className="h-[min(800px,150vw)] w-[min(800px,150vw)] rounded-full bg-accent/5 opacity-50 blur-[120px] mix-blend-screen" />
-      </div>
+      <AmbientOrbs />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-16 pt-32 sm:px-6">
         <div className="max-w-4xl">
@@ -63,7 +61,7 @@ export function Hero() {
             <Magnetic strength={0.3}>
               <a
                 href="#contact"
-                className="tactile-push inline-flex items-center justify-center bg-foreground px-8 py-4 text-sm font-medium text-background transition-colors hover:bg-accent hover:text-white"
+                className="tactile-push inline-flex items-center justify-center rounded-full bg-foreground px-8 py-4 text-sm font-medium text-background transition-all hover:bg-accent hover:text-white hover:scale-105"
               >
                 {t.cta}
               </a>
@@ -72,7 +70,7 @@ export function Hero() {
             <Magnetic strength={0.2}>
               <a
                 href="#services"
-                className="tactile-push inline-flex items-center justify-center border border-surface-border bg-transparent px-8 py-4 text-sm font-medium text-foreground transition-colors hover:border-foreground"
+                className="tactile-push inline-flex items-center justify-center rounded-full glass px-8 py-4 text-sm font-medium text-foreground transition-all hover:glass-strong hover:scale-105"
               >
                 {t.hero.secondaryCta}
               </a>

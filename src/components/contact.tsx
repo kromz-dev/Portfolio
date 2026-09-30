@@ -35,10 +35,11 @@ export function Contact() {
       aria-labelledby="contact-heading"
     >
       <div
-        className="pointer-events-none absolute left-0 top-1/2 w-full -translate-y-1/2 select-none overflow-hidden opacity-5"
+        className="pointer-events-none absolute left-0 top-1/2 w-full -translate-y-1/2 select-none overflow-hidden flex items-center justify-center"
         aria-hidden="true"
       >
-        <p className="whitespace-nowrap text-center font-display text-[15vw] font-bold uppercase leading-none tracking-tighter">
+        <div className="absolute top-1/2 left-0 w-full h-[6px] bg-white/30 -translate-y-1/2" />
+        <p className="whitespace-nowrap text-center font-display text-[15vw] font-bold uppercase leading-none tracking-tighter opacity-5">
           CONTACT
         </p>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { TechIcon } from "@/components/ui/tech-icon";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { useLanguage } from "@/components/language-provider";
 import { skillCategories } from "@/lib/data";
@@ -44,8 +45,9 @@ export function Skills() {
                   return (
                     <li
                       key={label}
-                      className="text-lg font-medium text-foreground"
+                      className="flex items-center text-lg font-medium text-foreground"
                     >
+                      <TechIcon name={label} />
                       {label}
                     </li>
                   );
