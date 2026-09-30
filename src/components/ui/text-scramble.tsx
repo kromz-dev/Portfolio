@@ -44,7 +44,7 @@ export function TextScramble({
           setDisplayText(text);
         }
 
-        iteration += 1 / 3;
+        iteration += 1.5;
       }, 30);
     };
 

@@ -60,8 +60,8 @@ export const homeLabDetails: {
   hardware: Localized;
   services: Localized;
 } = {
-  hardware: { fr: "Mini-PC Intel NUC sous Proxmox", en: "Intel NUC mini-PC running Proxmox" },
-  services: { fr: "Proxmox, Docker, Ollama (modèles IA en local)", en: "Proxmox, Docker, Ollama (local AI models)" },
+  hardware: { fr: "Dell OptiPlex 3060 sous Proxmox VE 9", en: "Dell OptiPlex 3060 running Proxmox VE 9" },
+  services: { fr: "LXC, Docker Compose, n8n, Jellyfin et Tailscale", en: "LXC, Docker Compose, n8n, Jellyfin and Tailscale" },
 };
 
 /** Projets affichés après le home lab et la mission DNS. */

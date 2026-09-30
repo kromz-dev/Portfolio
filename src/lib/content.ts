@@ -236,7 +236,7 @@ export const content: Record<Lang, Content> = {
       },
       bts: {
         title: "BTS CIEL option Informatique et Réseaux",
-        description: "Cybersécurité, informatique et réseaux. 1re année validée.",
+        description: "Cybersécurité, informatique et réseaux. 1re année validée. Cursus interrompu en 2e année — diplôme non obtenu.",
       },
     },
     skills: {
@@ -420,7 +420,7 @@ export const content: Record<Lang, Content> = {
       },
       bts: {
         title: "BTS CIEL — IT & Networks option",
-        description: "Cybersecurity, IT and networking (French 2-year IT program). First year completed.",
+        description: "Cybersecurity, IT and networking (French 2-year IT program). First year completed. Studies paused during 2nd year — diploma not obtained.",
       },
     },
     skills: {

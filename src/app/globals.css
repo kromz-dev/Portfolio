@@ -6,8 +6,8 @@
   --background: #fafafa;
   --foreground: #09090b;
   --surface: #f4f4f5;
-  --surface-border: #e4e4e7;
-  --muted: #71717a;
+  --surface-border: #d4d4d8; /* Better contrast for borders */
+  --muted: #52525b; /* Darker gray for small text */
   --accent: #2563eb;
   --accent-text: #2563eb;
   --accent-foreground: #ffffff;
@@ -17,11 +17,11 @@
   --background: #050505; /* Deeper off-black */
   --foreground: #f4f4f5;
   --surface: #0a0a0a;
-  --surface-border: #1f1f22;
-  --muted: #a1a1aa;
+  --surface-border: #3f3f46; /* Better contrast for interactive borders */
+  --muted: #d4d4d8; /* Brighter gray for small text */
   --accent: #2563eb; /* Pure electric blue */
-  /* Lighter blue for text on the near-black background (≈5.5:1, WCAG AA). */
-  --accent-text: #3b82f6;
+  /* High contrast blue for text on the near-black background */
+  --accent-text: #60a5fa;
   --accent-foreground: #ffffff;
 }
 
