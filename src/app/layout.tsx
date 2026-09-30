@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/components/language-provider";
-import { SiteBackground } from "@/components/ui/site-background";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space",
@@ -60,7 +59,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full bg-background text-foreground font-sans relative">
-        <SiteBackground />
         {/* Main Content */}
         <LanguageProvider>
           <div className="relative z-10">{children}</div>

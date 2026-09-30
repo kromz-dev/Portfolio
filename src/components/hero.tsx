@@ -8,12 +8,17 @@ import { useLanguage } from "@/components/language-provider";
 
 export function Hero() {
   const { t } = useLanguage();
+
   return (
     <section
       id="hero"
       className="relative flex min-h-[100dvh] items-center overflow-hidden"
       aria-labelledby="hero-heading"
     >
+      {/* Ultra-subtle radial glow for depth */}
+      <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
+        <div className="h-[min(800px,150vw)] w-[min(800px,150vw)] rounded-full bg-accent/5 opacity-50 blur-[120px] mix-blend-screen" />
+      </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-16 pt-32 sm:px-6">
         <div className="max-w-4xl">
