@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/components/language-provider";
+import { siteUrl } from "@/lib/site-url";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space",
@@ -21,15 +22,12 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const title = "Kamal Kaced | Développeur & services informatiques";
+const title = "Kamal Kaced — Prestataire informatique à Toulouse et en Ariège";
 const description =
-  "Création de sites web, dépannage, hébergement européen et automatisations IA pour TPE, associations et indépendants. Freelance basé à Mirepoix (Ariège), en local et à distance.";
+  "Je crée, dépanne et héberge vos outils informatiques : sites web, dépannage, serveurs et automatisations. Toulouse, Ariège et à distance.";
 
 export const metadata: Metadata = {
-  // TODO: set NEXT_PUBLIC_SITE_URL to the production domain once it exists.
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
-  ),
+  metadataBase: new URL(siteUrl),
   title: {
     default: title,
     template: "%s | Kamal Kaced",

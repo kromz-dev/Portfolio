@@ -85,21 +85,17 @@ export function Services() {
 
                 <div className="mt-auto pt-8">
                   <div className="border-t border-surface-border pt-4">
-                    {price ? (
-                      <p className="font-mono text-sm text-foreground">
-                        {l(price)}
-                      </p>
-                    ) : (
-                      <p className="inline-block border border-dashed border-muted/60 px-3 py-1 font-mono text-xs uppercase tracking-widest text-muted">
-                        {t.services.pricePending}
-                      </p>
-                    )}
+                    <p className="font-mono text-sm text-foreground">
+                      {l(price)}
+                    </p>
                   </div>
                 </div>
               </motion.article>
             );
           })}
         </div>
+
+        <p className="mt-6 text-sm text-muted">{t.services.vatNote}</p>
 
         {/* TODO (conditionnel) : activé par `showSapTaxCreditNote` dans
             src/lib/data.ts, uniquement une fois la déclaration SAP faite. */}

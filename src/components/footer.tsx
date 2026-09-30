@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { siteConfig } from "@/lib/data";
 import { socials } from "@/lib/socials";
 import { useLanguage } from "@/components/language-provider";
@@ -33,6 +34,14 @@ export function Footer() {
                   </a>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/mentions-legales/"
+                  className="text-sm text-muted transition-colors hover:text-foreground"
+                >
+                  {t.footer.legal}
+                </Link>
+              </li>
             </ul>
           </nav>
 

@@ -1,9 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
- * data.ts — configuration du site + TOUT ce qui reste à compléter.
- *
- * Kamal : cherche « TODO » dans ce fichier. Chaque valeur `null` est
- * affichée sur le site comme un encart « À compléter / To be completed »
- * (bordure en pointillés). Remplis-la et l'encart disparaît.
+ * data.ts — configuration du site, prix, projets, parcours, compétences.
  *
  * Tout le texte fixe (FR/EN) est dans src/lib/content.ts.
  * ═══════════════════════════════════════════════════════════════════ */
@@ -19,21 +15,20 @@ export interface Localized {
 export const siteConfig = {
   name: "Kamal Kaced",
   shortName: "Kamal",
-  location: "Mirepoix, Ariège",
+  location: "Toulouse & Ariège",
+  phone: "06 44 00 68 36",
+  phoneHref: "tel:+33644006836",
+  phoneIntl: "+33 6 44 00 68 36",
   githubUrl: "https://github.com/kromz-dev",
-  /**
-   * TODO: remplacer par la vraie adresse de contact.
-   * Tant que la valeur est "contact@exemple.fr", le site affiche une
-   * mention « adresse provisoire » à côté.
-   */
   email: "kkaced31@gmail.com",
+  /**
+   * BLOQUANT avant mise en ligne : adresse postale de l'éditeur (mentions
+   * légales). Laissée vide tant qu'elle n'est pas fournie.
+   */
+  address: "",
   /** TODO: URL LinkedIn. Tant que `null`, LinkedIn n'apparaît pas sur le site. */
   linkedinUrl: "https://www.linkedin.com/in/kamalkaced" as string | null,
 } as const;
-
-export const EMAIL_PLACEHOLDER = "contact@exemple.fr";
-export const isEmailPlaceholder =
-  (siteConfig.email as string) === EMAIL_PLACEHOLDER;
 
 /* ─────────────────────── Services à la personne ─────────────────────── */
 
@@ -49,38 +44,33 @@ export const showSapTaxCreditNote = false;
 export type ServiceId = "web" | "troubleshooting" | "infra" | "ai";
 
 /**
- * TODO: prix par service (ex. { fr: "À partir de 500 €", en: "From €500" }).
- * `null` => affiche « Prix à venir / Pricing coming soon ».
+ * Prix affichés sous chaque service.
  */
-export const servicePrices: Record<ServiceId, Localized | null> = {
+export const servicePrices: Record<ServiceId, Localized> = {
   web: { fr: "À partir de 590 €", en: "From €590" },
   troubleshooting: {
-    fr: "45 €/h à domicile (particuliers) · 60 €/h HT pour les pros",
-    en: "€45/h on-site for individuals · €60/h excl. VAT for businesses",
+    fr: "Particuliers : 45 €/h à domicile, déplacement inclus dans 15 km · Pros et à distance : 60 €/h, 1 h minimum",
+    en: "Individuals: €45/h on site, travel included within 15 km · Businesses & remote: €60/h, 1 h minimum",
   },
-  infra: { fr: "350 € l'installation + 49 €/mois", en: "€350 setup + €49/month" },
+  infra: {
+    fr: "350 € l'installation + 49 €/mois de maintenance · serveur refacturé à prix coûtant",
+    en: "€350 setup + €49/month maintenance · server billed at cost",
+  },
   ai: { fr: "À partir de 490 €", en: "From €490" },
 };
 
 /* ─────────────────────────── Réalisations ─────────────────────────── */
 
-/**
- * TODO: détails du home lab. Chaque `null` affiche un encart « À compléter ».
- * Ex. hardware: { fr: "Mini-PC …, NAS …", en: "Mini PC …, NAS …" }
- */
+/** Détails du home lab affichés dans la section Réalisations. */
 export const homeLabDetails: {
-  hardware: Localized | null;
-  services: Localized | null;
+  hardware: Localized;
+  services: Localized;
 } = {
-  hardware: null, // TODO: matériel
+  hardware: { fr: "Mini-PC Intel NUC sous Proxmox", en: "Intel NUC mini-PC running Proxmox" },
   services: { fr: "Proxmox, Docker, Ollama (modèles IA en local)", en: "Proxmox, Docker, Ollama (local AI models)" },
 };
 
-/**
- * TODO: projets supplémentaires. Chaque `null` affiche une carte
- * « À compléter ». Remplace par un objet pour afficher un vrai projet.
- * Ne JAMAIS inventer de client, de chiffre ou de lien.
- */
+/** Projets affichés après le home lab et la mission DNS. */
 export interface ExtraProject {
   title: Localized;
   description: Localized;
@@ -88,7 +78,7 @@ export interface ExtraProject {
   url?: string;
 }
 
-export const extraProjects: (ExtraProject | null)[] = [
+export const extraProjects: ExtraProject[] = [
   {
     title: {
       fr: "Portail client auto-hébergé",
@@ -104,34 +94,27 @@ export const extraProjects: (ExtraProject | null)[] = [
   {
     title: { fr: "JobBot", en: "JobBot" },
     description: {
-      fr: "Moteur de recherche d'emploi local pour aides-soignants : il interroge 5 sites, reconnaît les offres en double, écarte celles hors de la zone (distance réelle), repère les postes accessibles sans diplôme, les note et suit les candidatures. Fonctionne en local, sans compte ni IA générative : chaque décision est explicable.",
-      en: "Local job search engine for care assistants: it queries 5 job sites, detects duplicate listings, filters out offers outside the area (real distance), spots roles open without a diploma, scores them and tracks applications. Runs locally, with no account and no generative AI: every decision is explainable.",
+      fr: "Moteur de veille d'offres d'emploi en local : il interroge 5 sites, repère les doublons, filtre par distance réelle, note les offres et suit les candidatures. Sans IA générative : chaque décision est explicable.",
+      en: "Local job-listing monitor: it queries 5 job sites, spots duplicates, filters by real distance, scores listings and tracks applications. No generative AI: every decision is explainable.",
     },
-    tags: ["Python", "SQLite", "GitHub Actions"],
+    tags: ["Python", "SQLite", "GitHub Actions", "Automatisation"],
     url: "https://github.com/kromz-dev/jobbot",
   },
 ];
 
 /* ──────────────────────────── Parcours ──────────────────────────── */
 
-/**
- * TODO: dates de la formation BTS CIEL (ex. "2023 – 2024").
- * `null` => affiche « Dates à compléter ». Ne pas mentionner de diplôme :
- * la formation a été suivie mais pas validée.
- */
-export const btsCielPeriod: string | null = "2025 – 2026";
+/** Période du BTS CIEL. Ne jamais parler de « diplôme » : seule la 1re année est validée. */
+export const btsCielPeriod = "2025 – 2026";
 
-/**
- * TODO: autres étapes du parcours (emplois, stages, certifications…).
- * Chaque `null` affiche un encart « À compléter ».
- */
+/** Autres étapes du parcours (emplois, stages, formations). */
 export interface ParcoursItem {
   period: string;
   title: Localized;
   description: Localized;
 }
 
-export const extraParcours: (ParcoursItem | null)[] = [
+export const extraParcours: ParcoursItem[] = [
   {
     period: "Juillet 2025",
     title: {
@@ -157,8 +140,8 @@ export const extraParcours: (ParcoursItem | null)[] = [
   {
     period: "2023 – 2024",
     title: {
-      fr: "Aide-soignant · CH de Muret, puis EHPAD de nuit à Frouzins",
-      en: "Care assistant · Muret hospital, then night shifts in a care home in Frouzins",
+      fr: "Aide-soignant faisant fonction et ASH · hôpital et EHPAD",
+      en: "Care assistant · hospital and care homes",
     },
     description: {
       fr: "Sens du service, gestion des urgences et rigueur dans l'application des protocoles : des qualités que j'applique aujourd'hui au dépannage informatique.",
@@ -181,15 +164,15 @@ export interface SkillCategory {
 export const skillCategories: SkillCategory[] = [
   {
     title: { fr: "Web", en: "Web" },
-    skills: ["HTML / CSS", "JavaScript / TypeScript", "React / Next.js"],
+    skills: ["HTML / CSS", "JavaScript / TypeScript", "React / Next.js", "Git"],
   },
   {
-    title: { fr: "Linux & serveurs", en: "Linux & servers" },
-    skills: ["Linux", "Docker", "Reverse proxy", "SSH"],
+    title: { fr: "Systèmes & serveurs", en: "Systems & servers" },
+    skills: ["Linux", "Windows 10/11", "Proxmox", "Docker", "Reverse proxy", "SSH"],
   },
   {
     title: { fr: "Réseau", en: "Networking" },
-    skills: ["DNS", { fr: "Emails : SPF / DKIM / DMARC", en: "Email: SPF / DKIM / DMARC" }, "VPN"],
+    skills: ["DNS", "DHCP", "VLAN", { fr: "Emails : SPF / DKIM / DMARC", en: "Email: SPF / DKIM / DMARC" }, "VPN"],
   },
   {
     title: { fr: "IA & automatisation", en: "AI & automation" },

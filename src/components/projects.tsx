@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { Placeholder } from "@/components/ui/placeholder";
 import { useLanguage } from "@/components/language-provider";
 import { extraProjects, homeLabDetails } from "@/lib/data";
 
@@ -77,7 +76,7 @@ export function Projects() {
                       {label}
                     </dt>
                     <dd className="text-foreground">
-                      {value ? l(value) : <Placeholder inline />}
+                      {l(value)}
                     </dd>
                   </div>
                 ))}
@@ -111,11 +110,9 @@ export function Projects() {
             </div>
           </Row>
 
-          {/* Extra projects — TODO entries in data.ts */}
           {extraProjects.map((project, i) => (
-            <Row key={project ? project.title.fr : `todo-${i}`} index={2 + i}>
-              {project ? (
-                <>
+            <Row key={project.title.fr} index={2 + i}>
+              <>
                   <div className="md:col-span-4">
                     <h3 className="text-2xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-accent-text">
                       {l(project.title)}
@@ -142,17 +139,7 @@ export function Projects() {
                       ))}
                     </div>
                   </div>
-                </>
-              ) : (
-                <div className="md:col-span-12">
-                  <Placeholder>
-                    <span className="font-semibold text-foreground">
-                      {w.placeholderTitle}
-                    </span>{" "}
-                    — {w.placeholderBody}
-                  </Placeholder>
-                </div>
-              )}
+              </>
             </Row>
           ))}
         </div>

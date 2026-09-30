@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { Placeholder } from "@/components/ui/placeholder";
 import { useLanguage } from "@/components/language-provider";
 import { btsCielPeriod, extraParcours } from "@/lib/data";
 
@@ -70,32 +69,19 @@ export function Parcours() {
           />
           <Item
             index={1}
-            period={
-              btsCielPeriod ?? (
-                <Placeholder inline>{p.bts.periodPending}</Placeholder>
-              )
-            }
+            period={btsCielPeriod}
             title={p.bts.title}
             description={p.bts.description}
           />
-          {extraParcours.map((item, i) =>
-            item ? (
-              <Item
-                key={item.title.fr}
-                index={2 + i}
-                period={item.period}
-                title={l(item.title)}
-                description={l(item.description)}
-              />
-            ) : (
-              <li
-                key={`todo-${i}`}
-                className="border-t border-surface-border py-12"
-              >
-                <Placeholder>{p.placeholderBody}</Placeholder>
-              </li>
-            )
-          )}
+          {extraParcours.map((item, i) => (
+            <Item
+              key={item.title.fr}
+              index={2 + i}
+              period={item.period}
+              title={l(item.title)}
+              description={l(item.description)}
+            />
+          ))}
         </ol>
       </div>
     </section>

@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════════
  * content.ts — tout le texte du site, en français (défaut) et anglais.
- * Les valeurs à compléter (prix, email, projets…) sont dans data.ts.
+ * Prix, projets, parcours et compétences sont dans data.ts.
  * ═══════════════════════════════════════════════════════════════════ */
 
 import type { ServiceId } from "@/lib/data";
@@ -17,7 +17,6 @@ export interface Content {
     home: string;
     mainNav: string;
   };
-  placeholder: string;
   hero: {
     eyebrow: string;
     headline: string;
@@ -34,7 +33,6 @@ export interface Content {
     heading: string;
     intro: string;
     deliverablesLabel: string;
-    pricePending: string;
     items: {
       id: ServiceId;
       title: string;
@@ -42,6 +40,7 @@ export interface Content {
       deliverables: string[];
     }[];
     sapNote: string;
+    vatNote: string;
   };
   process: {
     heading: string;
@@ -69,14 +68,11 @@ export interface Content {
       reference: string;
       tags: string[];
     };
-    placeholderTitle: string;
-    placeholderBody: string;
   };
   parcours: {
     heading: string;
     freelance: { period: string; title: string; description: string };
-    bts: { title: string; description: string; periodPending: string };
-    placeholderBody: string;
+    bts: { title: string; description: string };
   };
   skills: {
     heading: string;
@@ -90,12 +86,18 @@ export interface Content {
     copy: string;
     copied: string;
     copyFailed: string;
-    emailPending: string;
+    phoneLabel: string;
     elsewhere: string;
   };
   footer: {
     rights: string;
     footerNav: string;
+    legal: string;
+  };
+  legal: {
+    title: string;
+    back: string;
+    sections: { heading: string; body: string[] }[];
   };
 }
 
@@ -113,11 +115,10 @@ export const content: Record<Lang, Content> = {
       home: "Retour en haut de page",
       mainNav: "Navigation principale",
     },
-    placeholder: "À compléter",
     hero: {
-      eyebrow: "Freelance",
+      eyebrow: "Prestataire informatique · Toulouse & Ariège",
       headline: "Je crée, dépanne et héberge vos outils informatiques.",
-      sub: "Sites, serveurs, automatisations — pour les TPE, associations et indépendants, en Ariège et à distance partout en Europe. Conçu avec des outils de code IA modernes, compris et maintenu par un humain.",
+      sub: "Sites web, dépannage, serveurs et automatisations pour les TPE, associations, indépendants et particuliers — à Toulouse, en Ariège et à distance.",
       secondaryCta: "Voir les services",
       scroll: "Défiler",
     },
@@ -125,15 +126,14 @@ export const content: Record<Lang, Content> = {
     about: {
       heading: "Qui suis-je",
       paragraphs: [
-        "Je m'appelle Kamal Kaced, prestataire informatique en micro-entreprise, basé à Mirepoix en Ariège. J'interviens sur place autour de chez moi et à distance pour des clients en France et en Europe, en français comme en anglais.",
+        "Je m'appelle Kamal Kaced, prestataire informatique indépendant (micro-entreprise) entre Toulouse et l'Ariège. J'interviens sur place dans ces deux secteurs et à distance partout en France et en Europe, en français comme en anglais.",
         "Je travaille avec des assistants de code IA : je les pilote, je relis et je comprends le code produit, et c'est moi qui le maintiens. Vous avez un interlocuteur unique qui sait ce qui tourne chez vous.",
       ],
     },
     services: {
       heading: "Services",
-      intro: "Quatre domaines, un seul interlocuteur. Chaque prestation fait l'objet d'un devis à prix fixe.",
+      intro: "Quatre domaines, un seul interlocuteur. Projets à prix fixe sur devis, dépannage au temps passé annoncé avant d'intervenir.",
       deliverablesLabel: "Exemples",
-      pricePending: "Prix à venir",
       items: [
         {
           id: "web",
@@ -179,14 +179,15 @@ export const content: Record<Lang, Content> = {
           ],
         },
       ],
-      sapNote: "Assistance informatique à domicile autour de Mirepoix : les particuliers peuvent bénéficier d'un crédit d'impôt de 50 % au titre des services à la personne.",
+      sapNote: "Assistance informatique à domicile à Toulouse et en Ariège : les particuliers peuvent bénéficier d'un crédit d'impôt de 50 % au titre des services à la personne.",
+      vatNote: "TVA non applicable, art. 293 B du CGI.",
     },
     process: {
       heading: "Comment ça se passe",
       steps: [
         {
           title: "Vous décrivez le besoin",
-          description: "Un court appel ou un message, gratuit et sans engagement.",
+          description: "Quelques lignes par email ou un appel — gratuit et sans engagement.",
         },
         {
           title: "Devis à prix fixe",
@@ -201,10 +202,10 @@ export const content: Record<Lang, Content> = {
     trust: {
       heading: "Engagements",
       points: [
-        { title: "Prix fixes", description: "Le prix du devis est le prix payé." },
-        { title: "Vous restez propriétaire", description: "Code, comptes et accès sont à votre nom." },
+        { title: "Prix annoncés d'avance", description: "Prix fixe sur devis pour les projets, taux horaire annoncé pour le dépannage." },
+        { title: "Vous restez propriétaire", description: "Code, domaine et comptes sont à votre nom." },
+        { title: "Accès retirés à la fin", description: "Je n'accède qu'à ce qui est nécessaire, et je rends tous les accès à la fin de la mission." },
         { title: "Confidentialité", description: "Accord de confidentialité (NDA) sur demande." },
-        { title: "Français & anglais", description: "Échanges et livrables dans les deux langues." },
         { title: "Hébergement européen", description: "Vos données restent en Europe." },
       ],
     },
@@ -220,28 +221,24 @@ export const content: Record<Lang, Content> = {
         servicesLabel: "Services",
       },
       dnsMission: {
-        title: "Correction DNS pour le site d'un client d'une agence web",
+        title: "Raccordement d'une application à son nom de domaine",
         period: "2026",
-        description: "Mission freelance : diagnostic et correction de la configuration DNS du site d'un client, en sous-traitance pour une agence web.",
-        reference: "Référence : Julius (agence web)",
+        description: "Mission en sous-traitance pour une agence web : configuration DNS pour mettre en ligne l'application d'un de ses clients sur son propre domaine.",
+        reference: "Référence : Julius (agence web), coordonnées sur demande",
         tags: ["DNS", "Freelance"],
       },
-      placeholderTitle: "Projet à venir",
-      placeholderBody: "Cette carte sera remplacée par un projet réel.",
     },
     parcours: {
       heading: "Parcours",
       freelance: {
-        period: "2026 – aujourd'hui",
+        period: "Septembre 2026 – aujourd'hui",
         title: "Freelance · micro-entreprise",
-        description: "Création de sites, dépannage, hébergement et automatisations pour des clients en France et en Europe.",
+        description: "Création de sites, dépannage, hébergement et automatisations, sur place et à distance.",
       },
       bts: {
-        title: "Formation BTS CIEL",
-        description: "Formation suivie en cybersécurité, informatique, réseaux et électronique.",
-        periodPending: "Dates à compléter",
+        title: "BTS CIEL option Informatique et Réseaux",
+        description: "Cybersécurité, informatique et réseaux. 1re année validée.",
       },
-      placeholderBody: "Étape du parcours à ajouter.",
     },
     skills: {
       heading: "Compétences",
@@ -250,17 +247,44 @@ export const content: Record<Lang, Content> = {
     contact: {
       heading: "Parlons de",
       headingAccent: "votre projet.",
-      body: "Décrivez votre besoin en quelques lignes. Je vous réponds avec des questions ou directement un devis à prix fixe.",
+      body: "Décrivez votre besoin en quelques lignes, ou appelez-moi. Je réponds sous 48 h, avec des questions ou directement un devis.",
       emailLabel: "Email",
       copy: "Copier",
       copied: "Copié !",
       copyFailed: "Copie impossible, sélectionnez l'adresse",
-      emailPending: "Adresse provisoire — à compléter",
+      phoneLabel: "Téléphone",
       elsewhere: "Ailleurs",
     },
     footer: {
       rights: "Tous droits réservés.",
       footerNav: "Navigation du pied de page",
+      legal: "Mentions légales",
+    },
+    legal: {
+      title: "Mentions légales",
+      back: "Retour au site",
+      sections: [
+        {
+          heading: "Éditeur du site",
+          body: [
+            "Kamal Kaced, entrepreneur individuel (micro-entreprise).",
+            "Adresse : __ADDRESS__",
+            "SIRET : en cours d'attribution.",
+            "Email : kkaced31@gmail.com",
+            "Téléphone : 06 44 00 68 36",
+            "TVA non applicable, art. 293 B du CGI.",
+          ],
+        },
+        { heading: "Directeur de la publication", body: ["Kamal Kaced."] },
+        {
+          heading: "Hébergeur",
+          body: ["GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis."],
+        },
+        {
+          heading: "Données personnelles",
+          body: ["Ce site n'utilise aucun cookie, aucun traceur et ne comporte aucun formulaire. L'email et le téléphone ne servent qu'à répondre aux demandes."],
+        },
+      ],
     },
   },
 
@@ -277,11 +301,10 @@ export const content: Record<Lang, Content> = {
       home: "Back to top",
       mainNav: "Main navigation",
     },
-    placeholder: "To be completed",
     hero: {
-      eyebrow: "Freelance",
+      eyebrow: "IT services · Toulouse & Ariège, France",
       headline: "I build, fix and host your IT tools.",
-      sub: "Websites, servers, automations — for small businesses, associations and independents, in Ariège and remotely across Europe. Built with modern AI coding tools, understood and maintained by a human.",
+      sub: "Websites, troubleshooting, servers and automations for small businesses, non-profits, freelancers and individuals — in Toulouse, Ariège and remotely.",
       secondaryCta: "See services",
       scroll: "Scroll",
     },
@@ -289,15 +312,14 @@ export const content: Record<Lang, Content> = {
     about: {
       heading: "About me",
       paragraphs: [
-        "I'm Kamal Kaced, a freelance IT service provider (French micro-entreprise) based in Mirepoix, Ariège. I work on site around my area and remotely for clients in France and across Europe, in French or English.",
+        "I'm Kamal Kaced, an independent IT service provider (French micro-entreprise) based between Toulouse and Ariège. I work on site in both areas and remotely across France and Europe, in French or English.",
         "I work with AI coding assistants: I drive them, I review and understand the code they produce, and I'm the one who maintains it. You get a single point of contact who knows what runs on your systems.",
       ],
     },
     services: {
       heading: "Services",
-      intro: "Four areas, one point of contact. Every job comes with a fixed-price quote.",
+      intro: "Four areas, one point of contact. Projects at a fixed, quoted price; troubleshooting billed by the hour, announced before I start.",
       deliverablesLabel: "Examples",
-      pricePending: "Pricing coming soon",
       items: [
         {
           id: "web",
@@ -343,14 +365,15 @@ export const content: Record<Lang, Content> = {
           ],
         },
       ],
-      sapNote: "On-site IT help around Mirepoix: private individuals in France can get a 50% tax credit under the \"services à la personne\" scheme.",
+      sapNote: "On-site IT help around Toulouse and Ariège: private individuals in France can get a 50% tax credit under the \"services à la personne\" scheme.",
+      vatNote: "VAT not applicable (French micro-entreprise, art. 293 B CGI).",
     },
     process: {
       heading: "How it works",
       steps: [
         {
           title: "You describe the need",
-          description: "A short call or message, free and with no commitment.",
+          description: "A few lines by email or a quick call — free, no commitment.",
         },
         {
           title: "Fixed-price quote",
@@ -365,10 +388,10 @@ export const content: Record<Lang, Content> = {
     trust: {
       heading: "Commitments",
       points: [
-        { title: "Fixed prices", description: "The quoted price is the price you pay." },
-        { title: "You stay the owner", description: "Code, accounts and access are in your name." },
+        { title: "Prices agreed upfront", description: "Fixed quoted price for projects, hourly rate announced for troubleshooting." },
+        { title: "You stay the owner", description: "Code, domain and accounts are in your name." },
+        { title: "Access removed at the end", description: "I only access what's needed, and I hand back all access when the job is done." },
         { title: "Confidentiality", description: "NDA available on request." },
-        { title: "French & English", description: "Communication and deliverables in both languages." },
         { title: "European hosting", description: "Your data stays in Europe." },
       ],
     },
@@ -384,28 +407,24 @@ export const content: Record<Lang, Content> = {
         servicesLabel: "Services",
       },
       dnsMission: {
-        title: "DNS fix for a web agency's client site",
+        title: "Connecting an app to its domain name",
         period: "2026",
-        description: "Freelance mission: diagnosed and fixed the DNS configuration of a client's website, subcontracted by a web agency.",
-        reference: "Reference: Julius (web agency)",
+        description: "Subcontracted for a web agency: DNS setup to put one of its clients' apps live on its own domain.",
+        reference: "Reference: Julius (web agency), contact details on request",
         tags: ["DNS", "Freelance"],
       },
-      placeholderTitle: "Upcoming project",
-      placeholderBody: "This card will be replaced by a real project.",
     },
     parcours: {
       heading: "Background",
       freelance: {
-        period: "2026 – today",
+        period: "September 2026 – today",
         title: "Freelance · micro-entreprise",
-        description: "Websites, troubleshooting, hosting and automations for clients in France and Europe.",
+        description: "Websites, troubleshooting, hosting and automations, on site and remotely.",
       },
       bts: {
-        title: "BTS CIEL training",
-        description: "Training followed in cybersecurity, IT, networking and electronics (French 2-year IT program).",
-        periodPending: "Dates to be completed",
+        title: "BTS CIEL — IT & Networks option",
+        description: "Cybersecurity, IT and networking (French 2-year IT program). First year completed.",
       },
-      placeholderBody: "Background item to be added.",
     },
     skills: {
       heading: "Skills",
@@ -414,17 +433,44 @@ export const content: Record<Lang, Content> = {
     contact: {
       heading: "Let's talk about",
       headingAccent: "your project.",
-      body: "Describe what you need in a few lines. I'll reply with questions or straight away with a fixed-price quote.",
+      body: "Describe what you need in a few lines, or give me a call. I reply within 48 hours, with questions or straight away with a quote.",
       emailLabel: "Email",
       copy: "Copy",
       copied: "Copied!",
       copyFailed: "Couldn't copy, please select the address",
-      emailPending: "Temporary address — to be completed",
+      phoneLabel: "Phone",
       elsewhere: "Elsewhere",
     },
     footer: {
       rights: "All rights reserved.",
       footerNav: "Footer navigation",
+      legal: "Legal notice",
+    },
+    legal: {
+      title: "Legal notice",
+      back: "Back to the site",
+      sections: [
+        {
+          heading: "Site publisher",
+          body: [
+            "Kamal Kaced, sole proprietor (French micro-entreprise).",
+            "Address: __ADDRESS__",
+            "SIRET: being assigned.",
+            "Email: kkaced31@gmail.com",
+            "Phone: +33 6 44 00 68 36",
+            "VAT not applicable, art. 293 B of the French General Tax Code (CGI).",
+          ],
+        },
+        { heading: "Publication director", body: ["Kamal Kaced."] },
+        {
+          heading: "Hosting provider",
+          body: ["GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States."],
+        },
+        {
+          heading: "Personal data",
+          body: ["This site uses no cookies, no trackers and has no forms. Email and phone are only used to answer enquiries."],
+        },
+      ],
     },
   },
 };

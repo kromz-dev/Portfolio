@@ -11,7 +11,7 @@ const LANG_OPTIONS = [
 ] as const;
 
 /** Segmented FR / EN switch with a sliding indicator. */
-function LangToggle() {
+export function LangToggle() {
   const { lang, setLang, t } = useLanguage();
   return (
     <div
