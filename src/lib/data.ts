@@ -109,14 +109,14 @@ export const btsCielPeriod = "2025 – 2026";
 
 /** Autres étapes du parcours (emplois, stages, formations). */
 export interface ParcoursItem {
-  period: string;
+  period: Localized;
   title: Localized;
   description: Localized;
 }
 
 export const extraParcours: ParcoursItem[] = [
   {
-    period: "Juillet 2025",
+    period: { fr: "Juillet 2025", en: "July 2025" },
     title: {
       fr: "Piscine de l'École 42 · Angoulême",
       en: "École 42 Piscine · Angoulême",
@@ -127,7 +127,7 @@ export const extraParcours: ParcoursItem[] = [
     },
   },
   {
-    period: "Janvier 2024",
+    period: { fr: "Janvier 2024", en: "January 2024" },
     title: {
       fr: "Apple Foundation Program · Toulouse",
       en: "Apple Foundation Program · Toulouse",
@@ -138,7 +138,7 @@ export const extraParcours: ParcoursItem[] = [
     },
   },
   {
-    period: "2023 – 2024",
+    period: { fr: "2023 – 2024", en: "2023 – 2024" },
     title: {
       fr: "Aide-soignant faisant fonction et ASH · hôpital et EHPAD",
       en: "Care assistant · hospital and care homes",

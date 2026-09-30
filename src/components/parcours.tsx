@@ -77,7 +77,7 @@ export function Parcours() {
             <Item
               key={item.title.fr}
               index={2 + i}
-              period={item.period}
+              period={l(item.period)}
               title={l(item.title)}
               description={l(item.description)}
             />
