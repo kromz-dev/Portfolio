@@ -115,7 +115,7 @@ export const content: Record<Lang, Content> = {
     },
     placeholder: "À compléter",
     hero: {
-      eyebrow: "Freelance · Mirepoix, Ariège",
+      eyebrow: "Freelance",
       headline: "Je crée, dépanne et héberge vos outils informatiques.",
       sub: "Sites, serveurs, automatisations — pour les TPE, associations et indépendants, en Ariège et à distance partout en Europe. Conçu avec des outils de code IA modernes, compris et maintenu par un humain.",
       secondaryCta: "Voir les services",
@@ -279,7 +279,7 @@ export const content: Record<Lang, Content> = {
     },
     placeholder: "To be completed",
     hero: {
-      eyebrow: "Freelance · Mirepoix, Ariège (France)",
+      eyebrow: "Freelance",
       headline: "I build, fix and host your IT tools.",
       sub: "Websites, servers, automations — for small businesses, associations and independents, in Ariège and remotely across Europe. Built with modern AI coding tools, understood and maintained by a human.",
       secondaryCta: "See services",

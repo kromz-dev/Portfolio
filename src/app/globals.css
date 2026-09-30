@@ -86,7 +86,7 @@ body {
   font-family: var(--font-sans);
 }
 
-/* ─── Site background: blueprint grid, glows, grain ─── */
+/* ─── Site background: top light + mouse halo (see site-background.tsx) ─── */
 .site-bg {
   position: fixed;
   inset: 0;
@@ -95,74 +95,37 @@ body {
   overflow: hidden;
 }
 
-.site-bg-grid {
+/* Quiet light pooled above the hero; the only layer on touch devices. */
+.site-bg-top {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(to right, rgba(148, 163, 184, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
-  background-size: 72px 72px;
-  background-position: center top;
-  mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 30%, transparent 85%);
+  background:
+    radial-gradient(ellipse 60% 40% at 50% -5%, rgba(59, 130, 246, 0.11), transparent 70%),
+    radial-gradient(ellipse 35% 25% at 50% -2%, rgba(147, 197, 253, 0.06), transparent 70%);
 }
 
-.site-bg-glow {
+/* Two-stop halo: a wide, faint wash with a slightly brighter core, so it
+ * reads as light on the surface rather than a coloured disc. */
+.site-bg-halo {
   position: absolute;
-  border-radius: 9999px;
-  filter: blur(120px);
+  top: 0;
+  left: 0;
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle closest-side,
+    rgba(96, 165, 250, 0.09) 0%,
+    rgba(59, 130, 246, 0.05) 30%,
+    rgba(37, 99, 235, 0.02) 60%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.8s ease;
   will-change: transform;
 }
 
-.site-bg-glow--a {
-  top: -20vh;
-  left: -10vw;
-  width: min(70vw, 900px);
-  height: min(70vw, 900px);
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.22), transparent 65%);
-  animation: glow-drift-a 26s ease-in-out infinite alternate;
-}
-
-.site-bg-glow--b {
-  top: 30vh;
-  right: -15vw;
-  width: min(60vw, 760px);
-  height: min(60vw, 760px);
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.12), transparent 65%);
-  animation: glow-drift-b 32s ease-in-out infinite alternate;
-}
-
-@keyframes glow-drift-a {
-  to { transform: translate3d(12vw, 8vh, 0) scale(1.1); }
-}
-
-@keyframes glow-drift-b {
-  to { transform: translate3d(-10vw, -12vh, 0) scale(0.9); }
-}
-
-.site-bg-grain {
-  position: absolute;
-  inset: -50%;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* Hero spotlight: a brighter blue grid revealed around the pointer. */
-.hero-spotlight {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  background-image:
-    linear-gradient(to right, rgba(59, 130, 246, 0.35) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(59, 130, 246, 0.35) 1px, transparent 1px);
-  background-size: 72px 72px;
-  background-position: center top;
-  background-attachment: fixed;
-  mask-image: radial-gradient(260px circle at var(--spot-x, 50%) var(--spot-y, 50%), #000, transparent 70%);
-}
-
-.hero-spotlight[data-active="true"] {
+.site-bg-halo[data-visible="true"] {
   opacity: 1;
 }
 
