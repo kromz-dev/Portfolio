@@ -2,7 +2,7 @@
 
 Un portfolio moderne, performant et interactif, construit avec **Next.js**, **React**, **Tailwind CSS** et **Framer Motion**. Ce projet met en valeur des compétences en développement et en administration système à travers une interface au design "Liquid Glass" (Glassmorphism) soignée et optimisée.
 
-## ✨ Fonctionnalités clés
+## Fonctionnalités clés
 
 - **Design "Ethereal Glass"** : Effets de transparence avancés (Glassmorphism), flous d'arrière-plan et bordures subtiles pour un rendu premium.
 - **Animations fluides** : Transitions douces et éléments interactifs propulsés par *Framer Motion*.
@@ -11,7 +11,7 @@ Un portfolio moderne, performant et interactif, construit avec **Next.js**, **Re
 - **Projets extensibles** : Cartes de projets cliquables qui se déploient élégamment pour afficher les fonctionnalités détaillées et les liens vers le code source.
 - **Icônes dynamiques** : Utilisation de logos officiels automatiques (via *SimpleIcons*) et génériques (*Lucide*) en fonction des stacks techniques.
 
-## 🛠️ Stack Technique
+## Stack Technique
 
 - **Framework** : Next.js 16.3 (Turbopack)
 - **Librairie UI** : React 19
@@ -20,7 +20,7 @@ Un portfolio moderne, performant et interactif, construit avec **Next.js**, **Re
 - **Icônes** : Lucide React & SimpleIcons
 - **Déploiement recommandé** : Vercel
 
-## 🚀 Démarrage (Local Development)
+## Démarrage (Local Development)
 
 ### 1. Cloner le dépôt
 
@@ -45,7 +45,7 @@ npm run dev
 
 Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur pour voir l'application.
 
-## 🏗️ Architecture du projet
+## Architecture du projet
 
 ```
 ├── src/
@@ -65,7 +65,7 @@ Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur pour
 │       └── socials.ts       # Liens vers les réseaux (GitHub, LinkedIn)
 ```
 
-## ⚙️ CI/CD & Automatisation
+## CI/CD & Automatisation
 
 Le projet inclut une configuration **GitHub Actions** (`.github/workflows/ci.yml`) garantissant la qualité du code à chaque modification.
 
@@ -76,7 +76,7 @@ Le projet inclut une configuration **GitHub Actions** (`.github/workflows/ci.yml
 4. **Build** pour garantir que le projet compile correctement (`npm run build`)
 5. **Audit de sécurité** pour détecter d'éventuelles vulnérabilités npm (`npm audit`)
 
-## 🚢 Déploiement
+## Déploiement
 
 Ce projet est optimisé pour un déploiement "Zero-config" sur [Vercel](https://vercel.com). 
 
