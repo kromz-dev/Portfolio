@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { TextScramble } from "@/components/ui/text-scramble";
@@ -8,17 +9,32 @@ import { useLanguage } from "@/components/language-provider";
 
 export function Hero() {
   const { t } = useLanguage();
+  const spotRef = useRef<HTMLDivElement>(null);
+  const [spotActive, setSpotActive] = useState(false);
+
+  const moveSpot = (e: React.PointerEvent<HTMLElement>) => {
+    if (e.pointerType !== "mouse" || !spotRef.current) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    spotRef.current.style.setProperty("--spot-x", `${e.clientX - rect.left}px`);
+    spotRef.current.style.setProperty("--spot-y", `${e.clientY - rect.top}px`);
+    if (!spotActive) setSpotActive(true);
+  };
 
   return (
     <section
+      onPointerMove={moveSpot}
+      onPointerLeave={() => setSpotActive(false)}
       id="hero"
       className="relative flex min-h-[100dvh] items-center overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      {/* Ultra-subtle radial glow for depth */}
-      <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
-        <div className="h-[min(800px,150vw)] w-[min(800px,150vw)] rounded-full bg-accent/5 opacity-50 blur-[120px] mix-blend-screen" />
-      </div>
+      {/* Pointer spotlight on the blueprint grid (mouse / trackpad only) */}
+      <div
+        ref={spotRef}
+        className="hero-spotlight z-0"
+        data-active={spotActive}
+        aria-hidden="true"
+      />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-16 pt-32 sm:px-6">
         <div className="max-w-4xl">

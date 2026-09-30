@@ -8,6 +8,7 @@ import {
   useSyncExternalStore,
   type ReactNode,
 } from "react";
+import { flushSync } from "react-dom";
 import { MotionConfig } from "framer-motion";
 import { content, DEFAULT_LANG, type Content, type Lang } from "@/lib/content";
 import type { Localized } from "@/lib/data";
@@ -53,6 +54,18 @@ function setStoredLang(lang: Lang) {
   listeners.forEach((l) => l());
 }
 
+/* Cross-fade the whole page when the language changes (View Transitions API),
+ * falling back to an instant switch when unsupported or motion is reduced. */
+function switchLang(next: Lang) {
+  if (next === current) return;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce || typeof document.startViewTransition !== "function") {
+    setStoredLang(next);
+    return;
+  }
+  document.startViewTransition(() => flushSync(() => setStoredLang(next)));
+}
+
 interface LanguageContextValue {
   lang: Lang;
   t: Content;
@@ -71,9 +84,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  const setLang = useCallback((next: Lang) => setStoredLang(next), []);
+  const setLang = useCallback((next: Lang) => switchLang(next), []);
   const toggle = useCallback(
-    () => setStoredLang(lang === "fr" ? "en" : "fr"),
+    () => switchLang(lang === "fr" ? "en" : "fr"),
     [lang]
   );
   const l = useCallback(

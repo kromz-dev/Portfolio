@@ -5,20 +5,47 @@ import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/lib/data";
 import { useLanguage } from "@/components/language-provider";
 
+const LANG_OPTIONS = [
+  { value: "fr", label: "FR", name: "Français" },
+  { value: "en", label: "EN", name: "English" },
+] as const;
+
+/** Segmented FR / EN switch with a sliding indicator. */
 function LangToggle() {
-  const { lang, toggle, t } = useLanguage();
+  const { lang, setLang, t } = useLanguage();
   return (
-    <button
-      type="button"
-      onClick={toggle}
+    <div
+      role="group"
       aria-label={t.nav.langToggleLabel}
-      title={t.nav.langToggleLabel}
-      className="inline-flex h-8 items-center gap-1 rounded-full px-3 font-mono text-xs font-medium text-muted transition-colors hover:text-foreground"
+      className="relative flex h-8 items-center rounded-full border border-white/10 bg-white/[0.03] p-0.5"
     >
-      <span className={lang === "fr" ? "text-foreground" : ""}>FR</span>
-      <span aria-hidden="true">/</span>
-      <span className={lang === "en" ? "text-foreground" : ""}>EN</span>
-    </button>
+      {LANG_OPTIONS.map((opt) => {
+        const active = lang === opt.value;
+        return (
+          <button
+            key={opt.value}
+            type="button"
+            lang={opt.value}
+            aria-label={opt.name}
+            aria-pressed={active}
+            onClick={() => setLang(opt.value)}
+            className={`relative z-10 inline-flex h-full w-9 items-center justify-center rounded-full font-mono text-[11px] font-semibold transition-colors duration-300 ${
+              active ? "text-white" : "text-muted hover:text-foreground"
+            }`}
+          >
+            {active && (
+              <motion.span
+                layoutId="lang-indicator"
+                className="absolute inset-0 -z-10 rounded-full bg-accent shadow-[0_0_16px_-2px_var(--accent)]"
+                transition={{ type: "spring", stiffness: 420, damping: 32 }}
+                aria-hidden="true"
+              />
+            )}
+            {opt.label}
+          </button>
+        );
+      })}
+    </div>
   );
 }
 
@@ -54,7 +81,6 @@ export function Navbar() {
             setHasFocus(false);
           }
         }}
-        layout
         className="glass-strong flex cursor-default items-center overflow-hidden rounded-full p-1.5 transition-colors"
       >
         <div className="flex items-center px-3 py-2 sm:px-4">
@@ -94,7 +120,7 @@ export function Navbar() {
           )}
         </AnimatePresence>
 
-        <div className="flex items-center gap-1 pr-1">
+        <div className="flex items-center gap-2 pl-1 pr-1">
           <LangToggle />
           <a
             href="#contact"
