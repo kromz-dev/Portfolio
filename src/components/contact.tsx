@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Check, Copy, Mail, Phone } from "lucide-react";
+import { Check, Copy, Mail } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { useLanguage } from "@/components/language-provider";
 import { siteConfig } from "@/lib/data";
@@ -11,7 +11,7 @@ import { socials } from "@/lib/socials";
 type CopyState = "idle" | "copied" | "failed";
 
 export function Contact() {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   const [copyState, setCopyState] = useState<CopyState>("idle");
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
@@ -88,19 +88,6 @@ export function Contact() {
                     ? t.contact.copyFailed
                     : ""}
               </p>
-            </div>
-
-            <div className="mt-6">
-              <p className="mb-3 font-mono text-xs uppercase tracking-widest text-muted">
-                {t.contact.phoneLabel}
-              </p>
-              <a
-                href={siteConfig.phoneHref}
-                className="inline-flex min-w-0 items-center gap-3 border border-surface-border bg-background px-5 py-4 font-mono text-base text-foreground transition-colors hover:border-foreground"
-              >
-                <Phone size={18} className="shrink-0 text-accent-text" aria-hidden="true" />
-                {lang === "fr" ? siteConfig.phone : siteConfig.phoneIntl}
-              </a>
             </div>
           </ScrollReveal>
 

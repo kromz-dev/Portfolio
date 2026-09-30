@@ -16,9 +16,6 @@ export const siteConfig = {
   name: "Kamal Kaced",
   shortName: "Kamal",
   location: "Toulouse & Ariège",
-  phone: "06 44 00 68 36",
-  phoneHref: "tel:+33644006836",
-  phoneIntl: "+33 6 44 00 68 36",
   githubUrl: "https://github.com/kromz-dev",
   email: "kkaced31@gmail.com",
   /** Adresse postale de l'éditeur, affichée dans les mentions légales. */

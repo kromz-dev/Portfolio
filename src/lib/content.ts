@@ -86,7 +86,6 @@ export interface Content {
     copy: string;
     copied: string;
     copyFailed: string;
-    phoneLabel: string;
     elsewhere: string;
   };
   footer: {
@@ -187,7 +186,7 @@ export const content: Record<Lang, Content> = {
       steps: [
         {
           title: "Vous décrivez le besoin",
-          description: "Quelques lignes par email ou un appel — gratuit et sans engagement.",
+          description: "Quelques lignes par email — gratuit et sans engagement.",
         },
         {
           title: "Devis à prix fixe",
@@ -247,12 +246,11 @@ export const content: Record<Lang, Content> = {
     contact: {
       heading: "Parlons de",
       headingAccent: "votre projet.",
-      body: "Décrivez votre besoin en quelques lignes, ou appelez-moi. Je réponds sous 48 h, avec des questions ou directement un devis.",
+      body: "Décrivez votre besoin en quelques lignes. Je réponds sous 48 h, avec des questions ou directement un devis.",
       emailLabel: "Email",
       copy: "Copier",
       copied: "Copié !",
       copyFailed: "Copie impossible, sélectionnez l'adresse",
-      phoneLabel: "Téléphone",
       elsewhere: "Ailleurs",
     },
     footer: {
@@ -271,7 +269,6 @@ export const content: Record<Lang, Content> = {
             "Adresse : __ADDRESS__",
             "SIRET : en cours d'attribution.",
             "Email : kkaced31@gmail.com",
-            "Téléphone : 06 44 00 68 36",
             "TVA non applicable, art. 293 B du CGI.",
           ],
         },
@@ -282,7 +279,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           heading: "Données personnelles",
-          body: ["Ce site n'utilise aucun cookie, aucun traceur et ne comporte aucun formulaire. L'email et le téléphone ne servent qu'à répondre aux demandes."],
+          body: ["Ce site n'utilise aucun cookie, aucun traceur et ne comporte aucun formulaire. L'email ne sert qu'à répondre aux demandes."],
         },
       ],
     },
@@ -373,7 +370,7 @@ export const content: Record<Lang, Content> = {
       steps: [
         {
           title: "You describe the need",
-          description: "A few lines by email or a quick call — free, no commitment.",
+          description: "A few lines by email — free, no commitment.",
         },
         {
           title: "Fixed-price quote",
@@ -433,12 +430,11 @@ export const content: Record<Lang, Content> = {
     contact: {
       heading: "Let's talk about",
       headingAccent: "your project.",
-      body: "Describe what you need in a few lines, or give me a call. I reply within 48 hours, with questions or straight away with a quote.",
+      body: "Describe what you need in a few lines. I reply within 48 hours, with questions or straight away with a quote.",
       emailLabel: "Email",
       copy: "Copy",
       copied: "Copied!",
       copyFailed: "Couldn't copy, please select the address",
-      phoneLabel: "Phone",
       elsewhere: "Elsewhere",
     },
     footer: {
@@ -457,7 +453,6 @@ export const content: Record<Lang, Content> = {
             "Address: __ADDRESS__",
             "SIRET: being assigned.",
             "Email: kkaced31@gmail.com",
-            "Phone: +33 6 44 00 68 36",
             "VAT not applicable, art. 293 B of the French General Tax Code (CGI).",
           ],
         },
@@ -468,7 +463,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           heading: "Personal data",
-          body: ["This site uses no cookies, no trackers and has no forms. Email and phone are only used to answer enquiries."],
+          body: ["This site uses no cookies, no trackers and has no forms. Your email is only used to answer enquiries."],
         },
       ],
     },
