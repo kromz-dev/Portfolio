@@ -56,7 +56,7 @@ export const servicePrices: Record<ServiceId, Localized | null> = {
   web: { fr: "À partir de 590 €", en: "From €590" },
   troubleshooting: {
     fr: "45 €/h à domicile (particuliers) · 60 €/h HT pour les pros",
-    en: "€60/h (businesses, remote) · €45/h on-site for individuals",
+    en: "€45/h on-site for individuals · €60/h excl. VAT for businesses",
   },
   infra: { fr: "350 € l'installation + 49 €/mois", en: "€350 setup + €49/month" },
   ai: { fr: "À partir de 490 €", en: "From €490" },
@@ -132,7 +132,39 @@ export interface ParcoursItem {
 }
 
 export const extraParcours: (ParcoursItem | null)[] = [
-  null, // TODO
+  {
+    period: "Juillet 2025",
+    title: {
+      fr: "Piscine de l'École 42 · Angoulême",
+      en: "École 42 Piscine · Angoulême",
+    },
+    description: {
+      fr: "Immersion intensive en programmation : C, Bash, UNIX et Git.",
+      en: "Intensive programming immersion: C, Bash, UNIX and Git.",
+    },
+  },
+  {
+    period: "Janvier 2024",
+    title: {
+      fr: "Apple Foundation Program · Toulouse",
+      en: "Apple Foundation Program · Toulouse",
+    },
+    description: {
+      fr: "Initiation au développement iOS avec Swift et SwiftUI.",
+      en: "Introduction to iOS development with Swift and SwiftUI.",
+    },
+  },
+  {
+    period: "2023 – 2024",
+    title: {
+      fr: "Aide-soignant · CH de Muret, puis EHPAD de nuit à Frouzins",
+      en: "Care assistant · Muret hospital, then night shifts in a care home in Frouzins",
+    },
+    description: {
+      fr: "Sens du service, gestion des urgences et rigueur dans l'application des protocoles : des qualités que j'applique aujourd'hui au dépannage informatique.",
+      en: "Customer-service mindset, handling emergencies and rigour in following protocols: qualities I now bring to IT troubleshooting.",
+    },
+  },
 ];
 
 /* ──────────────────────────── Compétences ─────────────────────────── */

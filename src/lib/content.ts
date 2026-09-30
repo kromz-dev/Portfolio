@@ -66,6 +66,7 @@ export interface Content {
       title: string;
       period: string;
       description: string;
+      reference: string;
       tags: string[];
     };
     placeholderTitle: string;
@@ -222,6 +223,7 @@ export const content: Record<Lang, Content> = {
         title: "Correction DNS pour le site d'un client d'une agence web",
         period: "2026",
         description: "Mission freelance : diagnostic et correction de la configuration DNS du site d'un client, en sous-traitance pour une agence web.",
+        reference: "Référence : Julius (agence web)",
         tags: ["DNS", "Freelance"],
       },
       placeholderTitle: "Projet à venir",
@@ -385,6 +387,7 @@ export const content: Record<Lang, Content> = {
         title: "DNS fix for a web agency's client site",
         period: "2026",
         description: "Freelance mission: diagnosed and fixed the DNS configuration of a client's website, subcontracted by a web agency.",
+        reference: "Reference: Julius (web agency)",
         tags: ["DNS", "Freelance"],
       },
       placeholderTitle: "Upcoming project",

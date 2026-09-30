@@ -102,6 +102,7 @@ export function Projects() {
               <p className="max-w-2xl text-lg leading-relaxed text-muted">
                 {w.dnsMission.description}
               </p>
+              <p className="mt-4 text-foreground">{w.dnsMission.reference}</p>
               <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm text-muted">
                 {w.dnsMission.tags.map((tag) => (
                   <span key={tag}>{tag}</span>
