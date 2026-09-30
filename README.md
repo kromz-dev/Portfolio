@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Kamal Kaced
 
-## Getting Started
+Site vitrine de Kamal Kaced, prestataire informatique indépendant à Toulouse et en Ariège : sites web, dépannage, infrastructure et automatisations.
 
-First, run the development server:
+**En ligne :** https://kromz-dev.github.io/Portfolio/
+
+## Stack
+
+- [Next.js](https://nextjs.org) (App Router) en export statique, React 19, TypeScript
+- Tailwind CSS 4, Framer Motion, Lucide
+- Site bilingue FR / EN (français par défaut), sans cookie ni traceur
+
+## Lancer en local
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Le site est servi sur http://localhost:3000/Portfolio (le `basePath` est celui de GitHub Pages).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint    # ESLint
+npm run build   # export statique dans out/
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Où modifier le contenu
 
-## Learn More
+| Quoi | Fichier |
+| --- | --- |
+| Textes fixes FR / EN | `src/lib/content.ts` |
+| Prix, projets, parcours, compétences, coordonnées | `src/lib/data.ts` |
+| Mentions légales | `src/lib/content.ts` (clé `legal`), page `src/app/mentions-legales` |
 
-To learn more about Next.js, take a look at the following resources:
+## Déploiement
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Chaque push sur `main` lance `.github/workflows/deploy.yml`, qui construit le site et le publie sur GitHub Pages. Le réglage à faire une seule fois : *Settings → Pages → Source : GitHub Actions*.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+L'URL publique est fournie au build par la variable `NEXT_PUBLIC_SITE_URL` (voir le workflow).
