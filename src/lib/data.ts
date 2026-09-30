@@ -21,11 +21,8 @@ export const siteConfig = {
   phoneIntl: "+33 6 44 00 68 36",
   githubUrl: "https://github.com/kromz-dev",
   email: "kkaced31@gmail.com",
-  /**
-   * BLOQUANT avant mise en ligne : adresse postale de l'éditeur (mentions
-   * légales). Laissée vide tant qu'elle n'est pas fournie.
-   */
-  address: "",
+  /** Adresse postale de l'éditeur, affichée dans les mentions légales. */
+  address: "Rue Jean François Pujos, 31600 Muret",
   /** TODO: URL LinkedIn. Tant que `null`, LinkedIn n'apparaît pas sur le site. */
   linkedinUrl: "https://www.linkedin.com/in/kamalkaced" as string | null,
 } as const;
